@@ -2,26 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-import { articlesData as data } from "../../../data/data";
 import styles from "./RandomArticles.module.scss";
+import { articlesData as data } from "~/data/data";
 
 RandomArticles.propTypes = {
-  numberOf: PropTypes.number.isRequired,
+  numberOfArticles: PropTypes.number.isRequired,
 };
 
-function RandomArticles({ numberOf }) {
+function RandomArticles({ numberOfArticles }) {
   const randomNumbers = [];
-  let dataLength = data.length;
 
-  for (; randomNumbers.length <= numberOf; ) {
-    let randomNumber = Math.floor(Math.random() * (dataLength - 1)); // minus 1 because there is an empty item in last array
+  for (; randomNumbers.length < numberOfArticles; ) {
+    let randomNumber = Math.floor(Math.random() * (data.length - 1)); // minus 1 because there is an empty item in last array
 
     if (!randomNumbers.includes(randomNumber)) {
       randomNumbers.push(randomNumber);
     }
+    console.log(randomNumbers.length);
   }
+
   return (
     <div className={clsx(styles.wrapper)}>
+      <h2>Random</h2>
       {randomNumbers.map((number, idx) => (
         // eslint-disable-next-line react/jsx-no-target-blank
         <a
@@ -33,7 +35,13 @@ function RandomArticles({ numberOf }) {
           <h4 className={clsx(styles.title)}>{data[number].title}</h4>
 
           <p className={clsx(styles.subject)}>
-            subject: {data[number].subject}
+            <span className={clsx(styles.static)}>
+              subject: {data[number].subject}
+            </span>
+            <span className={clsx(styles.static)}>
+              last time read: {data[number].lastTimeRead}
+            </span>
+            <span className={clsx(styles.static)}>ID: {data[number].id}</span>
           </p>
         </a>
       ))}

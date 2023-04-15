@@ -1,8 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
+// eslint-disable-next-line no-unused-vars
 import styles from "./GlobalStyles.module.scss";
-
-GlobalStyles.propTypes = {};
 
 function GlobalStyles({ children }) {
   return React.Children.only(children);

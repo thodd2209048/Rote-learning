@@ -1,5 +1,9 @@
 .wrapper {
+  width: 800px;
+  margin: 0 auto;
   padding: 15px;
+  border: 1px solid grey;
+  border-radius: 4px;
 }
 .article {
   display: block;
@@ -7,8 +11,20 @@
   text-align: start;
 }
 .title {
+  font-size: 2rem;
 }
 .subject {
 }
 .tag {
+}
+
+.static {
+  position: relative;
+  margin-right: 5px;
+  padding-right: 5px;
+  border-right: 1px solid var(--text-color);
+
+  &:last-child {
+    border-right: none;
+  }
 }
