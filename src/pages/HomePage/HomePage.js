@@ -5,8 +5,12 @@ HomePage.propTypes = {};
 function HomePage(props) {
   return (
     <div>
-      <h1>List of articles</h1>
-      <RandomArticles numberOfArticles={3} />
+      <header>
+        <h1>List of articles</h1>
+      </header>
+      <main>
+        <RandomArticles numberOfArticles={3} />
+      </main>
     </div>
   );
 }

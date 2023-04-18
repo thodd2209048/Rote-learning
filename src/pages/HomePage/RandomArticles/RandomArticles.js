@@ -23,7 +23,9 @@ function RandomArticles({ numberOfArticles }) {
 
   return (
     <div className={clsx(styles.wrapper)}>
-      <h2>Random</h2>
+      <header>
+        <h2>Random</h2>
+      </header>
       {randomNumbers.map((number, idx) => (
         // eslint-disable-next-line react/jsx-no-target-blank
         <a
@@ -33,7 +35,6 @@ function RandomArticles({ numberOfArticles }) {
           className={clsx(styles.article)}
         >
           <h4 className={clsx(styles.title)}>{data[number].title}</h4>
-
           <p className={clsx(styles.subject)}>
             <span className={clsx(styles.static)}>
               subject: {data[number].subject}
