@@ -22,10 +22,11 @@ function RandomArticles({ numberOfArticles }) {
   }
 
   return (
-    <div className={clsx(styles.wrapper)}>
+    <div className={clsx(styles.wrapper, ["container"])}>
       <header>
-        <h2>Random</h2>
+        <h2 className="text-center">Random</h2>
       </header>
+
       {randomNumbers.map((number, idx) => (
         // eslint-disable-next-line react/jsx-no-target-blank
         <a
