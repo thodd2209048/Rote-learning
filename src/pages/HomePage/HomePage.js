@@ -1,3 +1,4 @@
+import { Categories } from "./Categories";
 import { RandomArticles } from "./RandomArticles";
 
 HomePage.propTypes = {};
@@ -10,6 +11,7 @@ function HomePage(props) {
       </header>
       <main>
         <RandomArticles numberOfArticles={3} />
+        <Categories />
       </main>
     </div>
   );

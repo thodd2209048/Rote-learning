@@ -18,7 +18,6 @@ function RandomArticles({ numberOfArticles }) {
     if (!randomNumbers.includes(randomNumber)) {
       randomNumbers.push(randomNumber);
     }
-    console.log(randomNumbers.length);
   }
 
   return (
