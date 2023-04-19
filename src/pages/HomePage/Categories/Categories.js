@@ -1,16 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import { articlesData as data } from "~/data/data";
 
-Categories.propTypes = {};
-
 function Categories(props) {
-  const tagList = new Map();
+  const tagList = {};
 
   function addTag(article) {
     article.tags.forEach((tag) => {
-      tagList[tag]++;
+      if (!tagList[tag]) {
+        tagList[tag] = 1;
+      } else {
+        tagList[tag]++;
+      }
     });
   }
 
@@ -18,8 +19,23 @@ function Categories(props) {
     addTag(article);
   });
 
-  console.log(tagList);
-  return <div>tagList</div>;
+  let tagRender = Object.entries(tagList);
+
+  tagRender.sort((a, b) => {
+    const aVal = a[1];
+    const bVal = b[1];
+    return bVal - aVal;
+  });
+
+  return (
+    <div>
+      {tagRender.map((tag, idx) => (
+        <span key={idx}>
+          {tag[0]}:{tag[1]} {" | "}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 export default Categories;
