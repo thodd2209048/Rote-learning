@@ -11,7 +11,7 @@ function HomePage(props) {
       <RandomArticles numberOfArticles={3} originData={data} />
       <Categories />
       <p>{Math.random()}</p>
-      <SortByTag selectedTag="front-end" />
+      {/* <SortByTag selectedTag="front-end" /> */}
     </main>
   );
 }

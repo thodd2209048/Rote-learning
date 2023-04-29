@@ -17,7 +17,6 @@ function SortByTag({ selectedTag }) {
     }
   });
 
-  console.log(result);
   return (
     <>
       <h1>Articles by Tag: {selectedTag}</h1>

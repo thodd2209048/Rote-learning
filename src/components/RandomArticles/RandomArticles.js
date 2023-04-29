@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
 import styles from "./RandomArticles.module.scss";
 
 import { ArticleShow } from "~/components/ArticleShow";
-import RefreshBtn from "./RefreshBtn/RefreshBtn";
 
 RandomArticles.propTypes = {
   numberOfArticles: PropTypes.number.isRequired,
@@ -13,20 +12,23 @@ RandomArticles.propTypes = {
 };
 
 function RandomArticles({ numberOfArticles, originData }) {
-  const randomNumbers = [];
+  const [randomNumbers, setRandomNumbers] = useState([]);
   const randomArticles = [];
 
-  const refreshPage = () => {
-    window.location.reload(false);
-  };
+  const getNewRandomNumbers = () =>
+    setRandomNumbers(() => {
+      let newRandomNumbers = [];
+      for (; newRandomNumbers.length < numberOfArticles; ) {
+        let randomNumber = Math.floor(Math.random() * (originData.length - 1)); // minus 1 because there is an empty item in last array
 
-  for (; randomNumbers.length < numberOfArticles; ) {
-    let randomNumber = Math.floor(Math.random() * (originData.length - 1)); // minus 1 because there is an empty item in last array
+        if (!newRandomNumbers.includes(randomNumber)) {
+          newRandomNumbers.push(randomNumber);
+        }
+      }
+      return newRandomNumbers;
+    });
 
-    if (!randomNumbers.includes(randomNumber)) {
-      randomNumbers.push(randomNumber);
-    }
-  }
+  useEffect(getNewRandomNumbers, [numberOfArticles, originData]);
 
   randomNumbers.forEach((number) => {
     randomArticles.push(originData[number]);
@@ -38,7 +40,7 @@ function RandomArticles({ numberOfArticles, originData }) {
         <div>
           <h1 className="text-center">Random</h1>
         </div>
-        <RefreshBtn />
+        <button onClick={getNewRandomNumbers}>Refresh</button>
       </header>
 
       <ArticleShow articlesList={randomArticles} />
