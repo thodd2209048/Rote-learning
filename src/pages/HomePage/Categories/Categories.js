@@ -1,6 +1,8 @@
+import clsx from "clsx";
 import React from "react";
 
 import { articlesData as data } from "~/data/data";
+import styles from "./Categories.module.scss";
 
 function Categories(props) {
   const tagList = {};
@@ -28,7 +30,8 @@ function Categories(props) {
   });
 
   return (
-    <div>
+    <div className={clsx(styles.wrapper)}>
+      <h2 className={clsx(styles.header)}>Categories</h2>
       {tagRender.map((tag, idx) => (
         <span key={idx}>
           {tag[0]}:{tag[1]} {" | "}

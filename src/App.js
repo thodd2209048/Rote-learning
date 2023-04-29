@@ -1,13 +1,28 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 
-import { HomePage } from "./pages/HomePage";
+import "./App.css";
+import { DefaultLayout } from "./layouts/DefaultLayout";
+import { publicRoutes } from "./routes";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {publicRoutes.map((route, idx) => {
+          let Layout = DefaultLayout;
+          let Page = route.component;
+          return (
+            <Route
+              key={idx}
+              path={route.path}
+              element={
+                <Layout>
+                  <Page />
+                </Layout>
+              }
+            />
+          );
+        })}
       </Routes>
     </div>
   );
