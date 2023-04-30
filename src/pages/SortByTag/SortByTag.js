@@ -31,6 +31,7 @@ function SortByTag(props) {
     setSortedTagList(newSortedTagList);
   };
 
+  console.log(sortedTagList);
   return (
     <>
       <h1>Articles by Tag: {queryTag}</h1>
@@ -45,7 +46,7 @@ function SortByTag(props) {
       )}
       <button onClick={() => handleSort("HTML")}>set query tag</button>
 
-      <Categories setQueryTag={setQueryTag} />
+      <Categories handleSort={handleSort} />
     </>
   );
 }
