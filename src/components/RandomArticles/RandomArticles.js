@@ -12,27 +12,28 @@ RandomArticles.propTypes = {
 };
 
 function RandomArticles({ numberOfArticles, originData }) {
-  const [randomNumbers, setRandomNumbers] = useState([]);
-  const randomArticles = [];
+  const [randomArticles, setRandomArticles] = useState([]);
 
-  const getNewRandomNumbers = () =>
-    setRandomNumbers(() => {
-      let newRandomNumbers = [];
-      for (; newRandomNumbers.length < numberOfArticles; ) {
-        let randomNumber = Math.floor(Math.random() * (originData.length - 1)); // minus 1 because there is an empty item in last array
+  const getNewRandomArticles = () => {
+    const newRandomNumbers = [];
 
-        if (!newRandomNumbers.includes(randomNumber)) {
-          newRandomNumbers.push(randomNumber);
-        }
+    for (; newRandomNumbers.length < numberOfArticles; ) {
+      let randomNumber = Math.floor(Math.random() * (originData.length - 1)); // minus 1 because there is an empty item in last array
+
+      if (!newRandomNumbers.includes(randomNumber)) {
+        newRandomNumbers.push(randomNumber);
       }
-      return newRandomNumbers;
-    });
+    }
+    const newRandomArticles = newRandomNumbers.map(
+      (number) => originData[number]
+    );
+    setRandomArticles(newRandomArticles);
+  };
 
-  useEffect(getNewRandomNumbers, [numberOfArticles, originData]);
-
-  randomNumbers.forEach((number) => {
-    randomArticles.push(originData[number]);
-  });
+  useEffect(() => {
+    getNewRandomArticles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [numberOfArticles, originData]);
 
   return (
     <div className={clsx(styles.wrapper, ["container-fluid"])}>
@@ -40,7 +41,7 @@ function RandomArticles({ numberOfArticles, originData }) {
         <div>
           <h1 className="text-center">Random</h1>
         </div>
-        <button onClick={getNewRandomNumbers}>Refresh</button>
+        <button onClick={getNewRandomArticles}>Refresh</button>
       </header>
 
       <ArticleShow articlesList={randomArticles} />

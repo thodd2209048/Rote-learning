@@ -3,8 +3,9 @@ import React from "react";
 
 import { articlesData as data } from "~/data/data";
 import styles from "./Categories.module.scss";
+import { SingleTag } from "./SingleTag";
 
-function Categories(props) {
+function Categories({ setQueryTag }) {
   const tagList = {};
 
   function addTag(article) {
@@ -32,11 +33,16 @@ function Categories(props) {
   return (
     <div className={clsx(styles.wrapper)}>
       <h2 className={clsx(styles.header)}>Categories</h2>
-      {tagRender.map((tag, idx) => (
-        <span key={idx}>
-          {tag[0]}:{tag[1]} {" | "}
-        </span>
-      ))}
+      {tagRender.map((tag, idx) => {
+        return (
+          <SingleTag
+            onClick={() => console.log("onclick")}
+            key={idx}
+            tagKey={tag[0]}
+            tagValue={tag[1]}
+          />
+        );
+      })}
     </div>
   );
 }

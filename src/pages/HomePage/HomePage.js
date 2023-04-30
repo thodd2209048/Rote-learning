@@ -1,7 +1,7 @@
-import { Categories } from "./Categories";
-import { RandomArticles } from "../../components/RandomArticles";
+import { Categories } from "~/components/Categories";
+import { RandomArticles } from "~/components/RandomArticles";
 import { articlesData as data } from "~/data/data";
-import { SortByTag } from "../SortByTag";
+import { useLocation } from "react-router-dom";
 
 HomePage.propTypes = {};
 
@@ -10,8 +10,6 @@ function HomePage(props) {
     <main>
       <RandomArticles numberOfArticles={3} originData={data} />
       <Categories />
-      <p>{Math.random()}</p>
-      {/* <SortByTag selectedTag="front-end" /> */}
     </main>
   );
 }
