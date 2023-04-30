@@ -1,3 +1,10 @@
 .wrapper {
   margin-top: 20px;
 }
+
+.tag {
+  &::after {
+    content: "|";
+    padding: 0 5px;
+  }
+}

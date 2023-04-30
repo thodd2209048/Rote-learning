@@ -38,20 +38,22 @@ function Categories({ handleSort }) {
   return (
     <div className={clsx(styles.wrapper)}>
       <h2 className={clsx(styles.header)}>Categories</h2>
-      {tagRender.map((tag, idx) => {
-        const tagKey = tag[0];
-        const numberOfArticles = tag[1];
+      <div className={clsx(styles["tag-list"])}>
+        {tagRender.map((tag, idx) => {
+          const tagKey = tag[0];
+          const numberOfArticles = tag[1];
 
-        return (
-          <span
-            key={idx}
-            onClick={() => handleSort(tagKey)}
-            className={clsx(styles.tag)}
-          >
-            <SingleTag tagKey={tagKey} numberOfArticles={numberOfArticles} />
-          </span>
-        );
-      })}
+          return (
+            <span
+              key={idx}
+              onClick={() => handleSort(tagKey)}
+              className={clsx(styles.tag)}
+            >
+              <SingleTag tagKey={tagKey} numberOfArticles={numberOfArticles} />
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }
