@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
-import { articlesData as allArticle } from "~/data/data";
-import { RandomArticles } from "~/components/RandomArticles";
-import { ListMultiPages } from "~/components/ListMultiPages";
-import styles from "./SortByTag.module.scss";
 import clsx from "clsx";
-import { Categories } from "../../components/Categories";
-import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
+import { createContext } from "react";
+import { useLocation } from "react-router-dom";
+import { ListMultiPages } from "~/components/ListMultiPages";
+import { RandomArticles } from "~/components/RandomArticles";
+import { articlesData as allArticle } from "~/data/data";
+import { Categories } from "../../components/Categories";
+import styles from "./SortByTag.module.scss";
+
+const HandleSortContext = createContext(null);
 
 SortByTag.propTypes = {
   selectedTag: PropTypes.string,
@@ -31,7 +34,6 @@ function SortByTag(props) {
     setSortedTagList(newSortedTagList);
   };
 
-  console.log(sortedTagList);
   return (
     <>
       <h1>Articles by Tag: {queryTag}</h1>
@@ -45,9 +47,12 @@ function SortByTag(props) {
         <span className={clsx(styles.warning)}>Can not found!!!</span>
       )}
 
-      <Categories handleSort={handleSort} />
+      <HandleSortContext.Provider value={handleSort}>
+        <Categories />
+      </HandleSortContext.Provider>
     </>
   );
 }
 
 export default SortByTag;
+export { HandleSortContext };
