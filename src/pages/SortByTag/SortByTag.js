@@ -44,7 +44,6 @@ function SortByTag(props) {
       ) : (
         <span className={clsx(styles.warning)}>Can not found!!!</span>
       )}
-      <button onClick={() => handleSort("HTML")}>set query tag</button>
 
       <Categories handleSort={handleSort} />
     </>
