@@ -31,7 +31,6 @@ function SortByTag(props) {
     setSortedTagList(newSortedTagList);
   };
 
-  console.log(sortedTagList);
   return (
     <>
       <h1>Articles by Tag: {queryTag}</h1>
