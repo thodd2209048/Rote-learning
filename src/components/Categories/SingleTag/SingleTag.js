@@ -4,22 +4,23 @@ import { useNavigate } from "react-router-dom";
 
 SingleTag.propTypes = {
   tagKey: PropTypes.string,
-  tagValue: PropTypes.number,
+  numberOfArticles: PropTypes.number,
 };
 
-function SingleTag({ tagKey, tagValue }) {
+function SingleTag({ tagKey, numberOfArticles }) {
   const navigate = useNavigate();
 
   const goToTag = () => {
     navigate({
       pathname: "/sortByTag",
-      search: `?tag=${tagKey}`,
+      search: `?tag=${numberOfArticles}`,
     });
   };
 
   return (
-    <span onClick={goToTag}>
-      {tagKey}:{tagValue} {" | "}
+    // <span onClick={goToTag}>
+    <span>
+      {tagKey}:{numberOfArticles}
     </span>
   );
 }

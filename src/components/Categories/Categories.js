@@ -1,11 +1,16 @@
 import clsx from "clsx";
 import React from "react";
+import PropTypes from "prop-types";
 
 import { articlesData as data } from "~/data/data";
 import styles from "./Categories.module.scss";
 import { SingleTag } from "./SingleTag";
 
-function Categories({ setQueryTag }) {
+Categories.propTypes = {
+  handleSort: PropTypes.func,
+};
+
+function Categories({ handleSort }) {
   const tagList = {};
 
   function addTag(article) {
@@ -34,13 +39,17 @@ function Categories({ setQueryTag }) {
     <div className={clsx(styles.wrapper)}>
       <h2 className={clsx(styles.header)}>Categories</h2>
       {tagRender.map((tag, idx) => {
+        const tagKey = tag[0];
+        const numberOfArticles = tag[1];
+
         return (
-          <SingleTag
-            onClick={() => console.log("onclick")}
+          <span
             key={idx}
-            tagKey={tag[0]}
-            tagValue={tag[1]}
-          />
+            onClick={() => handleSort(tagKey)}
+            className={clsx(styles.tag)}
+          >
+            <SingleTag tagKey={tagKey} numberOfArticles={numberOfArticles} />
+          </span>
         );
       })}
     </div>
