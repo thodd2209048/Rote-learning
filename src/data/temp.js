@@ -1,36 +1,19 @@
-import { useState } from "react";
-
-function App() {
-  const [name, setName] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setName("");
-    console.log(name);
-  };
+const App = () => {
+  const a = "hi";
+  const b = "bye";
+  const value = useMemo(() => ({ a, b }), [a, b]);
 
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <div className="Field">
-            <label htmlFor="name"> Name:</label>
-            <input
-              id="name"
-              type="text"
-              placeholder="Name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <button disabled={!name} type="submit">
-            Submit
-          </button>
-        </fieldset>
-      </form>
-    </div>
+    <AppContext.Provider value={value}>
+           <ComponentA />
+        {" "}
+    </AppContext.Provider>
   );
-}
+};
 
-export default App;
+const ComponentA = React.memo(() => <ComponentB />);
+const ComponentB = () => <ComponentC />;
+const ComponentC = () => {
+  const contextValue = useContext(AppContext);
+  return null;
+};
