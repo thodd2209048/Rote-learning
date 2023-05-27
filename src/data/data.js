@@ -2125,6 +2125,19 @@ const articlesData = [
     editDate: "",
     lastTimeRead: "23-05-2023",
   },
+
+  {
+    id: 186,
+    title: "Meta front-end - 300. What is UX?",
+    link: "https://docs.google.com/document/d/1PlIoDwW37WeLAtpE4kQlh79zT08mq2OvYwfATrrfVLU/edit",
+    status: "completed",
+    subject: "programming",
+    tags: ["front-end", "ReactJS"],
+    series: "React - What is UX?",
+    createDate: "28-05-2023",
+    editDate: "",
+    lastTimeRead: "28-05-2023",
+  },
   {
     id: 18,
     title: "Meta front-end - ",
@@ -2132,10 +2145,10 @@ const articlesData = [
     status: "completed",
     subject: "programming",
     tags: ["front-end", "ReactJS"],
-    series: "React - Reusing behavior",
-    createDate: "23-05-2023",
+    series: "React - What is UX?",
+    createDate: "28-05-2023",
     editDate: "",
-    lastTimeRead: "23-05-2023",
+    lastTimeRead: "28-05-2023",
   },
 ];
 
