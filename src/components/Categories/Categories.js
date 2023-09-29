@@ -1,16 +1,15 @@
 import clsx from "clsx";
-import React from "react";
 import PropTypes from "prop-types";
 
 import { articlesData as data } from "~/data/data";
 import styles from "./Categories.module.scss";
-import { SingleTag } from "./SingleTag";
+import { SingleTag } from "./SingleTag/";
 
 Categories.propTypes = {
   handleSort: PropTypes.func,
 };
 
-function Categories({ handleSort }) {
+function Categories(props) {
   const tagList = {};
 
   function addTag(article) {
@@ -35,21 +34,16 @@ function Categories({ handleSort }) {
     return bVal - aVal;
   });
 
+  // const handleSort = useContext(HandleSortContext);
+
   return (
     <div className={clsx(styles.wrapper)}>
       <h2 className={clsx(styles.header)}>Categories</h2>
       <div className={clsx(styles["tag-list"])}>
         {tagRender.map((tag, idx) => {
-          const tagKey = tag[0];
-          const numberOfArticles = tag[1];
-
           return (
-            <span
-              key={idx}
-              onClick={() => handleSort(tagKey)}
-              className={clsx(styles.tag)}
-            >
-              <SingleTag tagKey={tagKey} numberOfArticles={numberOfArticles} />
+            <span key={idx} className={clsx(styles.tag)}>
+              <SingleTag tagKey={tag[0]} numberOfArticles={tag[1]} />
             </span>
           );
         })}
