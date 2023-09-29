@@ -23,15 +23,15 @@ function AddArticle(props) {
       console.log(error);
     }
   });
-  // const handleAdd = async () => {
-  //   try {
-  //     const res = await axios.post("http://localhost:8080/api/article");
-  //     setData(res.data);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleAdd = async () => {
+    try {
+      const res = await axios.post("http://localhost:8080/api/article");
+      setData(res.data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   console.log(url);
   return (
     <div className={clsx(styles.wrapper)}>
@@ -64,10 +64,7 @@ function AddArticle(props) {
         <label>Tags: </label>
         <input type="text" placeholder="Tags" />
       </div>
-      <button
-        className={clsx(styles.button)}
-        // onClick={handleAdd}
-      >
+      <button className={clsx(styles.button)} onClick={handleAdd}>
         Add
       </button>
     </div>
