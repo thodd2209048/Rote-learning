@@ -36,7 +36,7 @@ function RandomArticles({ numberOfArticles, originData }) {
   }, [numberOfArticles, originData]);
 
   return (
-    <div className={clsx(styles.wrapper, ["container-fluid"])}>
+    <div className={clsx(styles.wrapper)}>
       <header>
         <div>
           <h1 className="text-center">Random</h1>
