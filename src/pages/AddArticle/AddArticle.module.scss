@@ -22,3 +22,11 @@
 .button {
   padding: 3px 10px;
 }
+
+.result {
+  width: 600px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
