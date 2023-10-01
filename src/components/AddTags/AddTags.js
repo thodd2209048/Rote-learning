@@ -20,7 +20,6 @@ function AddTags({ tags, setTags }) {
       e.target.value = "";
     }
   };
-  console.log(tags);
   return (
     <div className={clsx(styles.wrapper)}>
       <ul className={clsx(styles.tags)}>

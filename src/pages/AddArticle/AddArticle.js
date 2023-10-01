@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 
-import styles from "./AddArticle.module.scss";
-import { Button } from "bootstrap";
 import axios from "axios";
 import AddTags from "~/components/AddTags/AddTags";
+import styles from "./AddArticle.module.scss";
 
 AddArticle.propTypes = {};
 
