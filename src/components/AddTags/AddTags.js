@@ -10,9 +10,9 @@ AddTags.propTypes = {
   setTags: PropTypes.func.isRequired,
 };
 
-function AddTags({ tags, setTags }) {
-  const [suggestions, setSuggestions] = useState([]);
+function AddTags({ tags, setTags, tagList }) {
   const [input, setInput] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   const removeTag = (indexToRemove) => {
     setTags(tags.filter((_, index) => index !== indexToRemove));
