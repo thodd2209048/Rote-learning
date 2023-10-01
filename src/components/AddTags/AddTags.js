@@ -10,12 +10,13 @@ AddTags.propTypes = {
   setTags: PropTypes.func.isRequired,
 };
 
-function AddTags({ tags, setTags, tagList }) {
+function AddTags({ tags, setTags }) {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  const removeTag = (indexToRemove) => {
+  const removeTag = (tag, indexToRemove) => {
     setTags(tags.filter((_, index) => index !== indexToRemove));
+    setSuggestions((prevSuggestion) => [...prevSuggestion, tag]);
   };
 
   const addTag = (e) => {
@@ -54,7 +55,7 @@ function AddTags({ tags, setTags, tagList }) {
             <span>{tag} </span>
             <CloseSvg
               className={clsx(styles.closeIcon)}
-              onClick={() => removeTag(index)}
+              onClick={() => removeTag(tag, index)}
             />
           </li>
         ))}
