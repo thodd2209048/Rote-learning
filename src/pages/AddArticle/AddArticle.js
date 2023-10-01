@@ -15,26 +15,12 @@ function AddArticle(props) {
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
   const [tags, setTags] = useState([]);
-  const [tagList, setTagList] = useState([]);
   const [article, setArticle] = useState({
     url: "",
     title: "",
     subject: "",
     tags: [],
   });
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await axios.get("http://localhost:8080/api/tags/tagNames");
-        const data = res.data;
-        setTagList(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
     setArticle({ url: url, title: title, subject: subject, tags: tags });
@@ -93,7 +79,7 @@ function AddArticle(props) {
       </div>
       <div className={clsx(styles.formField)}>
         <label>Tags: </label>
-        <AddTags tags={tags} setTags={setTags} tagList={tagList} />
+        <AddTags tags={tags} setTags={setTags} />
       </div>
       <button className={clsx(styles.button)} onClick={handleAdd}>
         Add
