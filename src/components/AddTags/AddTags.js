@@ -2,17 +2,17 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import { ReactComponent as CloseSvg } from "~/assets/Images/close.svg";
 import styles from "./Addtags.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 AddTags.propTypes = {
   tags: PropTypes.array.isRequired,
   setTags: PropTypes.func.isRequired,
-  tagList: PropTypes.array.isRequired,
 };
 
-function AddTags({ tags, setTags, tagList }) {
-  const suggestions = tagList;
+function AddTags({ tags, setTags }) {
   const [input, setInput] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   const removeTag = (indexToRemove) => {
     setTags(tags.filter((_, index) => index !== indexToRemove));
@@ -25,9 +25,25 @@ function AddTags({ tags, setTags, tagList }) {
     }
   };
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await axios.get("http://localhost:8080/api/tags/tagNames");
+        const data = res.data;
+        setSuggestions(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
   const handleChoseItem = (item) => {
     setTags([...tags, item]);
     setInput("");
+    setSuggestions((prevSuggestion) =>
+      prevSuggestion.filter((tag) => tag !== item)
+    );
   };
 
   return (
