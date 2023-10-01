@@ -27,3 +27,17 @@
     fill: white;
   }
 }
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid gray;
+}
+
+.dropdownRow {
+  display: flex;
+  flex-direction: row;
+  padding: 0 7px;
+  align-items: start;
+}
