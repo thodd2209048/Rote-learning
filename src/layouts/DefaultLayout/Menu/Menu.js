@@ -7,9 +7,10 @@ import clsx from "clsx";
 
 Menu.propTypes = {};
 
-function Menu(props) {
+function Menu({ className }) {
+  const classes = clsx(className, styles.wrapper);
   return (
-    <div className={clsx(styles.wrapper)}>
+    <div className={classes}>
       <h1>Menu</h1>
       <Link to={"/addArticle"}>Add article</Link>
     </div>

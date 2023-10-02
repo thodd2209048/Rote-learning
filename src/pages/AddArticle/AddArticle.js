@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 import AddTags from "~/components/AddTags/AddTags";
+import AddSubject from "./AddSubject/AddSubject";
 import styles from "./AddArticle.module.scss";
+
 
 AddArticle.propTypes = {};
 
@@ -18,15 +20,6 @@ function AddArticle(props) {
     title: "",
     subject: "",
     tags: [],
-  });
-
-  const [tagNames, setTagNames] = useState(async () => {
-    try {
-      const res = await axios.get("http://localhost:8080/api/tags/tagNames");
-      return res.data;
-    } catch (error) {
-      console.log(error);
-    }
   });
 
   useEffect(() => {
@@ -77,13 +70,18 @@ function AddArticle(props) {
       </div>
       <div className={clsx(styles.formField)}>
         <label>Subject: </label>
+        <AddSubject subject={subject} setSubject={setSubject} />
+      </div>
+
+      {/* <div className={clsx(styles.formField)}>
+        <label>Subject: </label>
         <input
           type="text"
           placeholder="Subject"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
-      </div>
+      </div> */}
       <div className={clsx(styles.formField)}>
         <label>Tags: </label>
         <AddTags tags={tags} setTags={setTags} />
