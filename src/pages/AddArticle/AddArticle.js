@@ -6,6 +6,7 @@ import styles from "./AddArticle.module.scss";
 import { Button } from "bootstrap";
 import axios from "axios";
 import AddTags from "~/components/AddTags/AddTags";
+import AddSubject from "./AddSubject/AddSubject";
 
 AddArticle.propTypes = {};
 
@@ -70,13 +71,18 @@ function AddArticle(props) {
       </div>
       <div className={clsx(styles.formField)}>
         <label>Subject: </label>
+        <AddSubject subject={subject} setSubject={setSubject} />
+      </div>
+
+      {/* <div className={clsx(styles.formField)}>
+        <label>Subject: </label>
         <input
           type="text"
           placeholder="Subject"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
-      </div>
+      </div> */}
       <div className={clsx(styles.formField)}>
         <label>Tags: </label>
         <AddTags tags={tags} setTags={setTags} />

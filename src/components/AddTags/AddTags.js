@@ -4,6 +4,7 @@ import { ReactComponent as CloseSvg } from "~/assets/Images/close.svg";
 import styles from "./Addtags.module.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SuggestionDropdown from "../SuggestionDropdown/SuggestionDropdown";
 
 AddTags.propTypes = {
   tags: PropTypes.array.isRequired,
@@ -67,41 +68,12 @@ function AddTags({ tags, setTags }) {
         onChange={(e) => setInput(e.target.value)}
       />
       {input && (
-        <div className={clsx(styles.dropdown)}>
-          {suggestions
-            .filter((item) => {
-              return item.toLowerCase().includes(input.toLowerCase());
-            })
-            .slice(0, 5)
-            .map((item) => {
-              const lowerCaseInput = input.toLowerCase();
-              const lowerCaseTag = item.toLowerCase();
-              let startIndex = lowerCaseTag.indexOf(lowerCaseInput);
-
-              return (
-                <div
-                  className={clsx(styles.dropdownRow)}
-                  key={item}
-                  onClick={() => handleChoseItem(item)}
-                >
-                  {item.split("").map((char, index) => {
-                    if (
-                      index >= startIndex &&
-                      index < startIndex + lowerCaseInput.length
-                    ) {
-                      return (
-                        <span key={index} className={clsx(styles.bold)}>
-                          {char}
-                        </span>
-                      );
-                    } else {
-                      return <span key={index}>{char}</span>;
-                    }
-                  })}
-                </div>
-              );
-            })}
-        </div>
+        <SuggestionDropdown
+          className={clsx(styles.dropdown)}
+          suggestions={suggestions}
+          input={input}
+          handleChoseItem={handleChoseItem}
+        />
       )}
     </div>
   );
