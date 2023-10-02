@@ -23,7 +23,7 @@ function AddTags({ tags, setTags }) {
   const addTag = (e) => {
     if (e.key === "Enter") {
       setTags([...tags, e.target.value]);
-      e.target.value = "";
+      setInput("");
     }
   };
 
@@ -64,7 +64,7 @@ function AddTags({ tags, setTags }) {
       <input
         placeholder="Enter to add tag"
         value={input}
-        onKeyUp={addTag}
+        onKeyDown={addTag}
         onChange={(e) => setInput(e.target.value)}
       />
       {input && (

@@ -30,3 +30,21 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.tag {
+  display: flex;
+  // width: auto;
+  margin: 0 2px;
+  padding: 0 8px;
+  border-radius: 3px;
+  background-color: var(--primary);
+  align-items: center;
+}

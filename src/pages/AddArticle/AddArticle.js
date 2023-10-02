@@ -6,7 +6,6 @@ import AddTags from "~/components/AddTags/AddTags";
 import AddSubject from "./AddSubject/AddSubject";
 import styles from "./AddArticle.module.scss";
 
-
 AddArticle.propTypes = {};
 
 function AddArticle(props) {
@@ -47,6 +46,7 @@ function AddArticle(props) {
     }
   };
 
+  console.log(resData);
   return (
     <div className={clsx(styles.wrapper)}>
       <h1>Add new article</h1>
@@ -59,6 +59,7 @@ function AddArticle(props) {
           onChange={(e) => setUrl(e.target.value)}
         />
       </div>
+
       <div className={clsx(styles.formField)}>
         <label>Title:</label>
         <input
@@ -68,20 +69,12 @@ function AddArticle(props) {
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
+
       <div className={clsx(styles.formField)}>
         <label>Subject: </label>
         <AddSubject subject={subject} setSubject={setSubject} />
       </div>
 
-      {/* <div className={clsx(styles.formField)}>
-        <label>Subject: </label>
-        <input
-          type="text"
-          placeholder="Subject"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-        />
-      </div> */}
       <div className={clsx(styles.formField)}>
         <label>Tags: </label>
         <AddTags tags={tags} setTags={setTags} />
@@ -96,12 +89,14 @@ function AddArticle(props) {
             <p>URL: {resData.url}</p>
             <p>Title: {resData.title}</p>
             <p>Subject: {resData.subject}</p>
-            <p>
-              Tags:{" "}
-              {resData.tags.map((tag, index) => {
-                <span key={index}>{tag}</span>;
-              })}
-            </p>
+            <div className={clsx(styles.tags)}>
+              <span>Tags: </span>
+              {resData.tags.map((tag, index) => (
+                <span className={clsx(styles.tag)} key={index}>
+                  {tag}
+                </span>
+              ))}
+            </div>
           </>
         )}
       </div>
