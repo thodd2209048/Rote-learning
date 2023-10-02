@@ -9,6 +9,7 @@
     "axios": "^1.5.1",
     "bootstrap": "^5.2.3",
     "clsx": "^1.2.1",
+    "cors": "^2.8.5",
     "customize-cra": "^1.0.0",
     "d": "^1.0.1",
     "normalize.css": "^8.0.1",
