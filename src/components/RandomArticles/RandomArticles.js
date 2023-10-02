@@ -5,36 +5,58 @@ import clsx from "clsx";
 import styles from "./RandomArticles.module.scss";
 
 import { ArticleShow } from "~/components/ArticleShow";
+import axios from "axios";
 
 RandomArticles.propTypes = {
   numberOfArticles: PropTypes.number.isRequired,
-  originData: PropTypes.array.isRequired,
 };
 
-function RandomArticles({ numberOfArticles, originData }) {
+function RandomArticles({ numberOfArticles }) {
+  const [articles, setArticles] = useState([]);
   const [randomArticles, setRandomArticles] = useState([]);
 
   const getNewRandomArticles = () => {
     const newRandomNumbers = [];
 
-    for (; newRandomNumbers.length < numberOfArticles; ) {
-      let randomNumber = Math.floor(Math.random() * (originData.length - 1)); // minus 1 because there is an empty item in last array
+    for (
+      ;
+      newRandomNumbers.length < numberOfArticles &&
+      numberOfArticles <= articles.length;
 
+    ) {
+      console.log("1loop");
+      let randomNumber = Math.floor(Math.random() * articles.length);
       if (!newRandomNumbers.includes(randomNumber)) {
         newRandomNumbers.push(randomNumber);
       }
     }
     const newRandomArticles = newRandomNumbers.map(
-      (number) => originData[number]
+      (number) => articles[number]
     );
+    console.log("2newRandomArticles", newRandomArticles);
     setRandomArticles(newRandomArticles);
   };
 
   useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await axios.get("http://localhost:8080/api/article");
+        const data = res.data;
+        setArticles(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     getNewRandomArticles();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [numberOfArticles, originData]);
+  }, [numberOfArticles, articles]);
 
+  console.log("3articles.length", articles.length);
+  console.log("4randomArticles", randomArticles);
   return (
     <div className={clsx(styles.wrapper)}>
       <header>

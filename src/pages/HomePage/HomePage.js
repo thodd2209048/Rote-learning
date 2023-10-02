@@ -1,29 +1,16 @@
 import { Categories } from "~/components/Categories";
 import { RandomArticles } from "~/components/RandomArticles";
-import axios from "axios";
+import { articlesData as data } from "~/data/data";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 HomePage.propTypes = {};
 
 function HomePage(props) {
-  const [articles, setArticles] = useState([]);
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const res = await axios.get("http://localhost:8080/api/article");
-  //       const data = res.data;
-  //       setArticles(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
-
-  console.log("article: ", articles);
   return (
     <main>
-      <RandomArticles numberOfArticles={3} originData={articles} />
+      <RandomArticles numberOfArticles={1} />
       <Categories />
     </main>
   );
