@@ -10,7 +10,7 @@ HomePage.propTypes = {};
 function HomePage(props) {
   return (
     <main>
-      <RandomArticles numberOfArticles={1} />
+      <RandomArticles numberOfArticles={3} />
       <Categories />
     </main>
   );

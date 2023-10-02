@@ -12,20 +12,21 @@ RandomArticles.propTypes = {
 };
 
 function RandomArticles({ numberOfArticles }) {
-  const [articles, setArticles] = useState([]);
   const [randomArticles, setRandomArticles] = useState([]);
+  const [articles, setArticles] = useState([]);
 
-  const getNewRandomArticles = () => {
+  const getNewRandomArticles = (articles) => {
+    console.log("articles", articles);
     const newRandomNumbers = [];
 
     for (
       ;
       newRandomNumbers.length < numberOfArticles &&
-      numberOfArticles <= articles.length;
+      newRandomNumbers.length < articles.length;
 
     ) {
-      console.log("1loop");
-      let randomNumber = Math.floor(Math.random() * articles.length);
+      let randomNumber = Math.floor(Math.random() * 2);
+      console.log(newRandomNumbers.length);
       if (!newRandomNumbers.includes(randomNumber)) {
         newRandomNumbers.push(randomNumber);
       }
@@ -33,7 +34,6 @@ function RandomArticles({ numberOfArticles }) {
     const newRandomArticles = newRandomNumbers.map(
       (number) => articles[number]
     );
-    console.log("2newRandomArticles", newRandomArticles);
     setRandomArticles(newRandomArticles);
   };
 
@@ -41,8 +41,11 @@ function RandomArticles({ numberOfArticles }) {
     async function fetchData() {
       try {
         const res = await axios.get("http://localhost:8080/api/article");
-        const data = res.data;
-        setArticles(data);
+        console.log("res", res);
+        if (res.status === 200) {
+          getNewRandomArticles(res.data);
+          setArticles(res.data);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -50,23 +53,18 @@ function RandomArticles({ numberOfArticles }) {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    getNewRandomArticles();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [numberOfArticles, articles]);
-
-  console.log("3articles.length", articles.length);
-  console.log("4randomArticles", randomArticles);
   return (
     <div className={clsx(styles.wrapper)}>
       <header>
         <div>
           <h1 className="text-center">Random</h1>
         </div>
-        <button onClick={getNewRandomArticles}>Refresh</button>
+        <button onClick={() => getNewRandomArticles(articles)}>Refresh</button>
       </header>
 
-      <ArticleShow articlesList={randomArticles} />
+      {randomArticles.length > 0 && (
+        <ArticleShow articlesList={randomArticles} />
+      )}
     </div>
   );
 }
