@@ -1,17 +1,19 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { ReactComponent as CloseSvg } from "~/assets/Images/close.svg";
-import styles from "./Addtags.module.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SuggestionDropdown from "../SuggestionDropdown/SuggestionDropdown";
 
-AddTags.propTypes = {
+import SuggestionDropdown from "../../SuggestionDropdown/SuggestionDropdown";
+import styles from "./TagsInput.module.scss";
+
+TagsInput.propTypes = {
   tags: PropTypes.array.isRequired,
   setTags: PropTypes.func.isRequired,
 };
 
-function AddTags({ tags, setTags }) {
+function TagsInput({ className, tags, setTags }) {
+  const classes = clsx(className, styles.wrapper);
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -49,34 +51,37 @@ function AddTags({ tags, setTags }) {
   }, []);
 
   return (
-    <div className={clsx(styles.wrapper)}>
-      <ul className={clsx(styles.tags)}>
-        {tags.map((tag, index) => (
-          <li className={clsx(styles.tag)} key={index}>
-            <span>{tag} </span>
-            <CloseSvg
-              className={clsx(styles.closeIcon)}
-              onClick={() => removeTag(tag, index)}
-            />
-          </li>
-        ))}
-      </ul>
-      <input
-        placeholder="Enter to add tag"
-        value={input}
-        onKeyDown={addTag}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      {input && (
-        <SuggestionDropdown
-          className={clsx(styles.dropdown)}
-          suggestions={suggestions}
-          input={input}
-          handleChoseItem={handleChoseItem}
+    <div className={classes}>
+      <label>Tags: </label>
+      <div className={clsx(styles.input)}>
+        <ul className={clsx(styles.tags)}>
+          {tags.map((tag, index) => (
+            <li className={clsx(styles.tag)} key={index}>
+              <span>{tag} </span>
+              <CloseSvg
+                className={clsx(styles.closeIcon)}
+                onClick={() => removeTag(tag, index)}
+              />
+            </li>
+          ))}
+        </ul>
+        <input
+          placeholder="Enter to add tag"
+          value={input}
+          onKeyDown={addTag}
+          onChange={(e) => setInput(e.target.value)}
         />
-      )}
+        {input && (
+          <SuggestionDropdown
+            className={clsx(styles.dropdown)}
+            suggestions={suggestions}
+            input={input}
+            handleChoseItem={handleChoseItem}
+          />
+        )}
+      </div>
     </div>
   );
 }
 
-export default AddTags;
+export default TagsInput;

@@ -16,7 +16,6 @@ function RandomArticles({ numberOfArticles }) {
   const [articles, setArticles] = useState([]);
 
   const getNewRandomArticles = (articles) => {
-    console.log("articles", articles);
     const newRandomNumbers = [];
 
     for (
@@ -41,7 +40,6 @@ function RandomArticles({ numberOfArticles }) {
     async function fetchData() {
       try {
         const res = await axios.get("http://localhost:8080/api/article");
-        console.log("res", res);
         if (res.status === 200) {
           getNewRandomArticles(res.data);
           setArticles(res.data);
