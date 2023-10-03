@@ -1,18 +1,31 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  justify-content: space-between;
+  align-items: center;
+  & input {
+    padding: 0 7px;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 500px;
+}
+
 .tags {
   display: flex;
+  height: 2.4rem;
   padding: 0;
   flex-wrap: wrap;
   list-style-type: none;
 }
 
 .tag {
-  display: flex;
-  width: auto;
   margin-right: 3px;
-  padding: 0 8px;
-  border-radius: 3px;
-  background-color: var(--primary);
-  align-items: center;
 }
 
 .closeIcon {

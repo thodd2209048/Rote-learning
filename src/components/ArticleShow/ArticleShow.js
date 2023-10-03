@@ -15,7 +15,7 @@ function ArticleShow({ articlesList }) {
         // eslint-disable-next-line react/jsx-no-target-blank
         <a
           key={idx}
-          href={article.link}
+          href={article.link || article.url}
           target="_blank"
           className={clsx(styles.article)}
         >

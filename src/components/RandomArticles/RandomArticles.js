@@ -1,50 +1,58 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import clsx from "clsx";
+import PropTypes from "prop-types";
+import { useContext, useEffect, useState } from "react";
 
-import styles from "./RandomArticles.module.scss";
-
+import { ArticlesDataContext } from "~/App";
 import { ArticleShow } from "~/components/ArticleShow";
+import styles from "./RandomArticles.module.scss";
 
 RandomArticles.propTypes = {
   numberOfArticles: PropTypes.number.isRequired,
-  originData: PropTypes.array.isRequired,
 };
 
-function RandomArticles({ numberOfArticles, originData }) {
+function RandomArticles({ className, numberOfArticles, originList }) {
   const [randomArticles, setRandomArticles] = useState([]);
 
-  const getNewRandomArticles = () => {
+  const getNewRandomArticles = (fullList) => {
     const newRandomNumbers = [];
+    for (
+      ;
+      newRandomNumbers.length < numberOfArticles &&
+      newRandomNumbers.length < fullList.length;
 
-    for (; newRandomNumbers.length < numberOfArticles; ) {
-      let randomNumber = Math.floor(Math.random() * (originData.length - 1)); // minus 1 because there is an empty item in last array
-
+    ) {
+      let randomNumber = Math.floor(Math.random() * fullList.length);
       if (!newRandomNumbers.includes(randomNumber)) {
         newRandomNumbers.push(randomNumber);
       }
     }
     const newRandomArticles = newRandomNumbers.map(
-      (number) => originData[number]
+      (number) => fullList[number]
     );
     setRandomArticles(newRandomArticles);
   };
 
   useEffect(() => {
-    getNewRandomArticles();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [numberOfArticles, originData]);
+    getNewRandomArticles(originList);
+  }, [originList]);
 
   return (
-    <div className={clsx(styles.wrapper)}>
+    <div className={clsx(className, styles.wrapper, "container")}>
       <header>
         <div>
           <h1 className="text-center">Random</h1>
         </div>
-        <button onClick={getNewRandomArticles}>Refresh</button>
+        <button
+          className={clsx(styles.button)}
+          onClick={() => getNewRandomArticles(originList)}
+        >
+          Refresh
+        </button>
       </header>
 
-      <ArticleShow articlesList={randomArticles} />
+      {randomArticles.length > 0 && (
+        <ArticleShow articlesList={randomArticles} />
+      )}
     </div>
   );
 }
