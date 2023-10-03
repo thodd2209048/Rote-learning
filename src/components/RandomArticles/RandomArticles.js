@@ -42,7 +42,10 @@ function RandomArticles({ numberOfArticles, originList }) {
         <div>
           <h1 className="text-center">Random</h1>
         </div>
-        <button onClick={() => getNewRandomArticles(originList)}>
+        <button
+          className={clsx(styles.button)}
+          onClick={() => getNewRandomArticles(originList)}
+        >
           Refresh
         </button>
       </header>

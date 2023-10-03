@@ -19,9 +19,21 @@ function ListMultiPages({ list, articlePerPage }) {
   return (
     <div className={clsx(styles.wrapper, ["container-fluid"])}>
       <ArticleShow articlesList={currentList} />
-      <button onClick={() => setCurrentPage((prev) => prev - 1)}>Prev</button>
-      <span>Page: {currentPage}</span>
-      <button onClick={() => setCurrentPage((prev) => prev + 1)}>Next</button>
+      <div className={clsx(styles.buttons)}>
+        <button
+          className={clsx(styles.button)}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Prev
+        </button>
+        <span>Page: {currentPage}</span>
+        <button
+          className={clsx(styles.button)}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
