@@ -6,6 +6,7 @@ import axios from "axios";
 
 import SuggestionDropdown from "../../SuggestionDropdown/SuggestionDropdown";
 import styles from "./TagsInput.module.scss";
+import Tag from "~/components/Tag/Tag";
 
 TagsInput.propTypes = {
   tags: PropTypes.array.isRequired,
@@ -57,11 +58,12 @@ function TagsInput({ className, tags, setTags }) {
         <ul className={clsx(styles.tags)}>
           {tags.map((tag, index) => (
             <li className={clsx(styles.tag)} key={index}>
-              <span>{tag} </span>
-              <CloseSvg
-                className={clsx(styles.closeIcon)}
-                onClick={() => removeTag(tag, index)}
-              />
+              <Tag tagName={tag}>
+                <CloseSvg
+                  className={clsx(styles.closeIcon)}
+                  onClick={() => removeTag(tag, index)}
+                />
+              </Tag>
             </li>
           ))}
         </ul>
