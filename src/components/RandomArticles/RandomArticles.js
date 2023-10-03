@@ -10,55 +10,41 @@ RandomArticles.propTypes = {
   numberOfArticles: PropTypes.number.isRequired,
 };
 
-function RandomArticles({ numberOfArticles }) {
+function RandomArticles({ numberOfArticles, originList }) {
   const [randomArticles, setRandomArticles] = useState([]);
-  const articles = useContext(ArticlesDataContext);
 
-  const getNewRandomArticles = (articles) => {
+  const getNewRandomArticles = (fullList) => {
     const newRandomNumbers = [];
     for (
       ;
       newRandomNumbers.length < numberOfArticles &&
-      newRandomNumbers.length < articles.length;
+      newRandomNumbers.length < fullList.length;
 
     ) {
-      let randomNumber = Math.floor(Math.random() * 2);
+      let randomNumber = Math.floor(Math.random() * fullList.length);
       if (!newRandomNumbers.includes(randomNumber)) {
         newRandomNumbers.push(randomNumber);
       }
     }
     const newRandomArticles = newRandomNumbers.map(
-      (number) => articles[number]
+      (number) => fullList[number]
     );
     setRandomArticles(newRandomArticles);
   };
 
   useEffect(() => {
-    getNewRandomArticles(articles);
-  }, [articles]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const res = await axios.get("http://localhost:8080/api/article");
-  //       if (res.status === 200) {
-  //         getNewRandomArticles(res.data);
-  //         setArticles(res.data);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
+    getNewRandomArticles(originList);
+  }, [originList]);
 
   return (
-    <div className={clsx(styles.wrapper)}>
+    <div className={clsx(styles.wrapper, "container-fluid")}>
       <header>
         <div>
           <h1 className="text-center">Random</h1>
         </div>
-        <button onClick={() => getNewRandomArticles(articles)}>Refresh</button>
+        <button onClick={() => getNewRandomArticles(originList)}>
+          Refresh
+        </button>
       </header>
 
       {randomArticles.length > 0 && (

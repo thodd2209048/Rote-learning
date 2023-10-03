@@ -2,9 +2,13 @@
   margin-top: 20px;
 }
 
+.tagList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .tag {
-  &::after {
-    content: "|";
-    padding: 0 5px;
-  }
+  margin: 0 3px;
+  cursor: pointer;
 }

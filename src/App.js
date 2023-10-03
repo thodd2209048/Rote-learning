@@ -10,6 +10,17 @@ export const ArticlesDataContext = createContext();
 
 function App() {
   const [articles, setArticles] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  const addTag = (article) => {
+    article.tags.forEach((tag) => {
+      if (!tags[tag]) {
+        setTags((prevTags) => ({ ...prevTags, [tag]: 1 }));
+      } else {
+        setTags((prevTags) => ({ ...prevTags, [tag]: prevTags[tag] + 1 }));
+      }
+    });
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -17,6 +28,10 @@ function App() {
         const res = await axios.get("http://localhost:8080/api/article");
         if (res.status === 200) {
           setArticles(res.data);
+
+          res.data.forEach((article) => {
+            addTag(article);
+          });
         }
       } catch (error) {
         console.log(error);
@@ -25,9 +40,8 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(articles);
   return (
-    <ArticlesDataContext.Provider value={articles}>
+    <ArticlesDataContext.Provider value={{ articles, tags }}>
       <div className="App">
         <Routes>
           {publicRoutes.map((route, idx) => {

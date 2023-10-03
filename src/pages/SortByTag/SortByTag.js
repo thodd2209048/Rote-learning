@@ -11,49 +11,49 @@ import { Categories } from "../../components/Categories";
 import styles from "./SortByTag.module.scss";
 import { ArticlesDataContext } from "~/App";
 
-const HandleSortContext = createContext(null);
-
 SortByTag.propTypes = {
   selectedTag: PropTypes.string,
 };
 
 function SortByTag(props) {
   const location = useLocation();
-  const allArticle = useContext(ArticlesDataContext);
+  const { articles } = useContext(ArticlesDataContext);
   const [queryTag, setQueryTag] = useState(() => {
     const params = queryString.parse(location.search);
     return params.tag || "all";
   });
 
-  const [sortedTagList, setSortedTagList] = useState(allArticle);
+  const [sortedArticleList, setSortedArticleList] = useState(articles);
 
   const handleSort = (newTag) => {
     setQueryTag(newTag);
-    const newSortedTagList = allArticle.filter((article) =>
+    const newSortedTagList = articles.filter((article) =>
       article.tags.includes(newTag)
     );
-    setSortedTagList(newSortedTagList);
+    setSortedArticleList(newSortedTagList);
   };
 
   return (
     <>
       <h1>Articles by Tag: {queryTag}</h1>
-      {sortedTagList.length > 0 ? (
+      {sortedArticleList.length > 0 ? (
         <>
-          <RandomArticles numberOfArticles={1} originData={sortedTagList} />
-          <h2>All article</h2>
-          <ListMultiPages list={sortedTagList} articlePerPage={5} />
+          <RandomArticles numberOfArticles={1} originList={sortedArticleList} />
+          <div className={clsx(styles.allArticle, "container-fluid")}>
+            <h2>All article sorted by tag [{queryTag}]</h2>
+            <ListMultiPages list={sortedArticleList} articlePerPage={5} />
+          </div>
         </>
       ) : (
         <span className={clsx(styles.warning)}>Can not found!!!</span>
       )}
 
-      <HandleSortContext.Provider value={handleSort}>
-        <Categories />
-      </HandleSortContext.Provider>
+      <Categories
+        className={clsx(styles.categories, "container-fluid")}
+        handleSort={handleSort}
+      />
     </>
   );
 }
 
 export default SortByTag;
-export { HandleSortContext };
