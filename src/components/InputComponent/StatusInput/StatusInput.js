@@ -19,7 +19,7 @@ function StatusInput({ className, setStatus }) {
             id="statusInProcess"
             name="status"
             onClick={() => {
-              setStatus("in progress");
+              setStatus("in_progress");
             }}
           />
         </div>
