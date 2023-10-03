@@ -20,8 +20,6 @@ function ListMultiPages({ list, articlePerPage }) {
       ? list.length / articlePerPage
       : Math.floor(list.length / articlePerPage) + 1;
 
-  console.log(maxPage);
-
   return (
     <div className={clsx(styles.wrapper, ["container-fluid"])}>
       <ArticleShow articlesList={currentList} />

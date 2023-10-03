@@ -12,28 +12,27 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [tags, setTags] = useState([]);
 
-  const addTag = (article) => {
-    article.tags.forEach((tag) => {
-      setTags((prevTags) => {
-        if (!prevTags[tag]) {
-          return { ...prevTags, [tag]: 1 };
+  useEffect(() => {
+    let tagCounts = {};
+    const countTag = (article) => {
+      article.tags.forEach((tag) => {
+        if (tagCounts[tag] === undefined) {
+          tagCounts[tag] = 1;
         } else {
-          return { ...prevTags, [tag]: prevTags[tag] + 1 };
+          tagCounts[tag]++;
         }
       });
-    });
-  };
+    };
 
-  useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get("http://localhost:8080/api/article");
         if (res.status === 200) {
           setArticles(res.data);
-
           res.data.forEach((article) => {
-            addTag(article);
+            countTag(article);
           });
+          setTags(tagCounts);
         }
       } catch (error) {
         console.log(error);
