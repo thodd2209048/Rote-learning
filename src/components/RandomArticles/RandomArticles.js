@@ -10,7 +10,7 @@ RandomArticles.propTypes = {
   numberOfArticles: PropTypes.number.isRequired,
 };
 
-function RandomArticles({ numberOfArticles, originList }) {
+function RandomArticles({ className, numberOfArticles, originList }) {
   const [randomArticles, setRandomArticles] = useState([]);
 
   const getNewRandomArticles = (fullList) => {
@@ -37,7 +37,7 @@ function RandomArticles({ numberOfArticles, originList }) {
   }, [originList]);
 
   return (
-    <div className={clsx(styles.wrapper, "container-fluid")}>
+    <div className={clsx(className, styles.wrapper, "container")}>
       <header>
         <div>
           <h1 className="text-center">Random</h1>

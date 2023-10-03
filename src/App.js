@@ -14,11 +14,13 @@ function App() {
 
   const addTag = (article) => {
     article.tags.forEach((tag) => {
-      if (!tags[tag]) {
-        setTags((prevTags) => ({ ...prevTags, [tag]: 1 }));
-      } else {
-        setTags((prevTags) => ({ ...prevTags, [tag]: prevTags[tag] + 1 }));
-      }
+      setTags((prevTags) => {
+        if (!prevTags[tag]) {
+          return { ...prevTags, [tag]: 1 };
+        } else {
+          return { ...prevTags, [tag]: prevTags[tag] + 1 };
+        }
+      });
     });
   };
 

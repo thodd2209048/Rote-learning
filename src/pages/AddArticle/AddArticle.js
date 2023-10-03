@@ -8,6 +8,7 @@ import styles from "./AddArticle.module.scss";
 import StatusInput from "~/components/InputComponent/StatusInput/StatusInput";
 import UrlInput from "~/components/InputComponent/UrlInput/UrlInput";
 import TitleInput from "~/components/InputComponent/TitleInput/TitleInput";
+import MultiAdd from "./MultiAdd/MultiAdd";
 
 AddArticle.propTypes = {};
 
@@ -105,6 +106,8 @@ function AddArticle(props) {
           </>
         )}
       </div>
+
+      {/* <MultiAdd /> */}
     </div>
   );
 }
