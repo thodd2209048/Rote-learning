@@ -1,16 +1,17 @@
 .wrapper {
-  // margin-top: 20px;
+  --margin: 3px;
   padding: 1rem 0;
 }
 
 .tagList {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  // max-height: calc((2.4rem + var(--margin) * 2) * 3);
+  overflow-y: hidden;
 }
 
 .tag {
-  margin: 3px;
+  margin: var(--margin);
   cursor: pointer;
 
   &:hover {

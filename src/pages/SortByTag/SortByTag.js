@@ -21,7 +21,6 @@ function SortByTag(props) {
   const [sortedArticleList, setSortedArticleList] = useState([]);
   const [queryTag, setQueryTag] = useState(() => {
     const params = queryString.parse(location.search);
-    console.log("params.tag", params.tag);
     return params.tag || "all";
   });
 
@@ -38,7 +37,6 @@ function SortByTag(props) {
     handleSort(queryTag);
   }, [articles, queryTag]);
 
-  console.log("sortedArticleList", sortedArticleList);
   return (
     <>
       <h1>Articles by Tag: {queryTag}</h1>

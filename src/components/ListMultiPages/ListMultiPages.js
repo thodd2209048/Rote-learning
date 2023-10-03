@@ -15,6 +15,12 @@ function ListMultiPages({ list, articlePerPage }) {
   let firstArticle = (currentPage - 1) * articlePerPage;
   let nextFirstArticle = currentPage * articlePerPage;
   let currentList = list.slice(firstArticle, nextFirstArticle);
+  let maxPage =
+    list.length % articlePerPage === 0
+      ? list.length / articlePerPage
+      : Math.floor(list.length / articlePerPage) + 1;
+
+  console.log(maxPage);
 
   return (
     <div className={clsx(styles.wrapper, ["container-fluid"])}>
@@ -22,14 +28,16 @@ function ListMultiPages({ list, articlePerPage }) {
       <div className={clsx(styles.buttons)}>
         <button
           className={clsx(styles.button)}
-          onClick={() => setCurrentPage((prev) => prev - 1)}
+          onClick={() => setCurrentPage((prev) => (prev === 1 ? 1 : prev - 1))}
         >
           Prev
         </button>
         <span>Page: {currentPage}</span>
         <button
           className={clsx(styles.button)}
-          onClick={() => setCurrentPage((prev) => prev + 1)}
+          onClick={() =>
+            setCurrentPage((prev) => (prev === maxPage ? prev : prev + 1))
+          }
         >
           Next
         </button>
