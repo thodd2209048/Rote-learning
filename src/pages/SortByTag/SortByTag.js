@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import clsx from "clsx";
 import queryString from "query-string";
@@ -7,9 +7,9 @@ import { createContext } from "react";
 import { useLocation } from "react-router-dom";
 import { ListMultiPages } from "~/components/ListMultiPages";
 import { RandomArticles } from "~/components/RandomArticles";
-import { articlesData as allArticle } from "~/data/data";
 import { Categories } from "../../components/Categories";
 import styles from "./SortByTag.module.scss";
+import { ArticlesDataContext } from "~/App";
 
 const HandleSortContext = createContext(null);
 
@@ -19,6 +19,7 @@ SortByTag.propTypes = {
 
 function SortByTag(props) {
   const location = useLocation();
+  const allArticle = useContext(ArticlesDataContext);
   const [queryTag, setQueryTag] = useState(() => {
     const params = queryString.parse(location.search);
     return params.tag || "all";

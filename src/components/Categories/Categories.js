@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
-import { articlesData as data } from "~/data/data";
 import styles from "./Categories.module.scss";
 import { SingleTag } from "./SingleTag/";
+import { ArticlesDataContext } from "~/App";
+import { useContext } from "react";
 
 Categories.propTypes = {
   handleSort: PropTypes.func,
@@ -11,6 +12,7 @@ Categories.propTypes = {
 
 function Categories(props) {
   const tagList = {};
+  const allArticle = useContext(ArticlesDataContext);
 
   function addTag(article) {
     article.tags.forEach((tag) => {
@@ -22,7 +24,7 @@ function Categories(props) {
     });
   }
 
-  data.forEach((article) => {
+  allArticle.forEach((article) => {
     addTag(article);
   });
 
