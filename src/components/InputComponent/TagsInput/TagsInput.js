@@ -6,7 +6,7 @@ import axios from "axios";
 
 import SuggestionDropdown from "../../SuggestionDropdown/SuggestionDropdown";
 import styles from "./TagsInput.module.scss";
-import Tag from "~/components/Tag/Tag";
+import Tag from "~/components/TagComponents/Tag/Tag";
 
 TagsInput.propTypes = {
   tags: PropTypes.array.isRequired,

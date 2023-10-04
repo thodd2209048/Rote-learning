@@ -6,7 +6,7 @@ import { SingleTag } from "./SingleTag/";
 import { ArticlesDataContext } from "~/App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Tag from "../Tag/Tag";
+import Tag from "../TagComponents/Tag/Tag";
 
 Categories.propTypes = {
   handleSort: PropTypes.func,
