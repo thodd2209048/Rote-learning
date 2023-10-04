@@ -2,13 +2,13 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
-import AddTags from "~/components/InputComponent/TagsInput/TagsInput";
 import AddSubject from "../../components/InputComponent/SubjectInput/SubjectInput";
 import styles from "./AddArticle.module.scss";
 import StatusInput from "~/components/InputComponent/StatusInput/StatusInput";
 import UrlInput from "~/components/InputComponent/UrlInput/UrlInput";
 import TitleInput from "~/components/InputComponent/TitleInput/TitleInput";
 import MultiAdd from "./MultiAdd/MultiAdd";
+import TagsInput from "~/components/InputComponent/TagsInput/TagsInput";
 
 AddArticle.propTypes = {};
 
@@ -80,7 +80,7 @@ function AddArticle(props) {
       </div>
 
       <div className={clsx(styles.formField)}>
-        <AddTags tags={tags} setTags={setTags} />
+        <TagsInput tags={tags} setTags={setTags} />
       </div>
 
       <button className={clsx(styles.button)} onClick={handleAdd}>

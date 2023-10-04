@@ -15,7 +15,7 @@ function Tag({ className, tagName, children, handleClick }) {
 
   return (
     <div className={classes}>
-      <div className={clsx(styles.tag)} onClick={() => handleClick()}>
+      <div className={clsx(styles.tag)} onClick={handleClick}>
         {tagName} {children}
       </div>
     </div>
