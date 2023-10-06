@@ -2,13 +2,10 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
-import AddSubject from "../../components/InputComponent/SubjectInput/SubjectInput";
-import styles from "./AddArticle.module.scss";
 import StatusInput from "~/components/InputComponent/StatusInput/StatusInput";
-import UrlInput from "~/components/InputComponent/UrlInput/UrlInput";
-import TitleInput from "~/components/InputComponent/TitleInput/TitleInput";
-import MultiAdd from "./MultiAdd/MultiAdd";
 import TagsInput from "~/components/InputComponent/TagsInput/TagsInput";
+import TextInput from "~/components/InputComponent/TextInput/TextInput";
+import styles from "./AddArticle.module.scss";
 
 AddArticle.propTypes = {};
 
@@ -18,12 +15,14 @@ function AddArticle(props) {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("");
   const [subject, setSubject] = useState("");
+  const [series, setSeries] = useState("");
   const [tags, setTags] = useState([]);
   const [article, setArticle] = useState({
     url: "",
     title: "",
     status: "",
     subject: "",
+    series: "",
     tags: [],
   });
 
@@ -33,9 +32,10 @@ function AddArticle(props) {
       title: title,
       status: status,
       subject: subject,
+      series: series,
       tags: tags,
     });
-  }, [url, title, status, subject, tags]);
+  }, [url, title, status, subject, series, tags]);
 
   const handleAdd = async () => {
     try {
@@ -51,6 +51,7 @@ function AddArticle(props) {
         setTitle("");
         setStatus("");
         setSubject("");
+        setSeries("");
         setTags([]);
       }
       setResData(newData);
@@ -64,15 +65,40 @@ function AddArticle(props) {
       <h1>Add new article</h1>
 
       <div className={clsx(styles.formField)}>
-        <UrlInput url={url} setUrl={setUrl} />
+        <TextInput
+          value={url}
+          setValue={setUrl}
+          label={"URL:"}
+          placeholder="http://"
+          id={"urlInput"}
+        />
       </div>
 
       <div className={clsx(styles.formField)}>
-        <TitleInput title={title} setTitle={setTitle} />
+        <TextInput
+          value={title}
+          setValue={setTitle}
+          label={"Title:"}
+          id={"titleInput"}
+        />
       </div>
 
       <div className={clsx(styles.formField)}>
-        <AddSubject subject={subject} setSubject={setSubject} />
+        <TextInput
+          value={subject}
+          setValue={setSubject}
+          label={"Subject:"}
+          id={"subjectInput"}
+        />
+      </div>
+
+      <div className={clsx(styles.formField)}>
+        <TextInput
+          value={series}
+          setValue={setSeries}
+          label={"Series:"}
+          id={"seriesInput"}
+        />
       </div>
 
       <div className={clsx(styles.formField)}>
@@ -95,6 +121,7 @@ function AddArticle(props) {
             <p>Title: {resData.title}</p>
             <p>Status: {resData.status}</p>
             <p>Subject: {resData.subject}</p>
+            <p>Series: {resData.series}</p>
             <div className={clsx(styles.tags)}>
               <span>Tags: </span>
               {resData.tags.map((tag, index) => (
