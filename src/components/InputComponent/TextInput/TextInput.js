@@ -9,7 +9,7 @@ TextInput.propTypes = {
   setValue: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  id: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 function TextInput({

@@ -18,54 +18,62 @@ function AddArticle(props) {
   const [subject, setSubject] = useState("");
   const [series, setSeries] = useState("");
   const [tags, setTags] = useState([]);
+  const [type, setType] = useState("");
   const [repetition, setRepetition] = useState("");
   const [article, setArticle] = useState({
     url: "",
     title: "",
-    status: "",
     subject: "",
+
     series: "",
     tags: [],
+    type: "",
+    status: "",
     repetition: "",
   });
   const statusOptions = ["in_progress", "completed"];
   const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
+  const typeOptions = ["article", "video", "note"];
 
   useEffect(() => {
     setArticle({
       url: url,
       title: title,
-      status: status,
       subject: subject,
       series: series,
       tags: tags,
+      type: type,
+      status: status,
       repetition: repetition,
     });
-  }, [url, title, status, subject, series, tags, repetition]);
+  }, [url, title, status, subject, series, tags, type, repetition]);
 
   const handleAdd = async () => {
     try {
       if (url !== "" && title !== "" && subject !== "") {
+        const res = await axios.post(
+          "http://localhost:8080/api/article",
+          article
+        );
+        const newData = res.data;
+        if (!!newData) {
+          setUrl("");
+          setTitle("");
+          setSubject("");
+          setSeries("");
+          setTags([]);
+          setType("");
+          setStatus("completed");
+          setRepetition("first reading");
+        }
+        setResData(newData);
       }
-      const res = await axios.post(
-        "http://localhost:8080/api/article",
-        article
-      );
-      const newData = res.data;
-      if (!!newData) {
-        setUrl("");
-        setTitle("");
-        setStatus("");
-        setSubject("");
-        setSeries("");
-        setTags([]);
-        setRepetition("");
-      }
-      setResData(newData);
     } catch (error) {
       console.log(error);
     }
   };
+  console.log("article", article);
+  console.log("resData", resData);
 
   return (
     <div className={clsx(styles.wrapper)}>
@@ -109,7 +117,23 @@ function AddArticle(props) {
       </div>
 
       <div className={clsx(styles.formField)}>
+        <TagsInput tags={tags} setTags={setTags} />
+      </div>
+
+      <div className={clsx(styles.formField)}>
         <RadioInput
+          label={"Type:"}
+          value={type}
+          setValue={setType}
+          options={typeOptions}
+          id={"typeInput"}
+        />
+      </div>
+
+      <div className={clsx(styles.formField)}>
+        <RadioInput
+          label={"Status:"}
+          value={status}
           setValue={setStatus}
           options={statusOptions}
           id={"statusInput"}
@@ -117,11 +141,9 @@ function AddArticle(props) {
       </div>
 
       <div className={clsx(styles.formField)}>
-        <TagsInput tags={tags} setTags={setTags} />
-      </div>
-
-      <div className={clsx(styles.formField)}>
         <RadioInput
+          label={"Repetition:"}
+          value={repetition}
           setValue={setRepetition}
           options={repetitionOptions}
           id={"repetitionInput"}
@@ -149,6 +171,7 @@ function AddArticle(props) {
                 </span>
               ))}
             </div>
+            <p>Repetition: {resData.repetition}</p>
           </>
         )}
       </div>
