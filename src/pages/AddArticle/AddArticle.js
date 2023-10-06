@@ -5,6 +5,7 @@ import axios from "axios";
 import StatusInput from "~/components/InputComponent/StatusInput/StatusInput";
 import TagsInput from "~/components/InputComponent/TagsInput/TagsInput";
 import TextInput from "~/components/InputComponent/TextInput/TextInput";
+import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
 import styles from "./AddArticle.module.scss";
 
 AddArticle.propTypes = {};
@@ -17,6 +18,7 @@ function AddArticle(props) {
   const [subject, setSubject] = useState("");
   const [series, setSeries] = useState("");
   const [tags, setTags] = useState([]);
+  const [repetition, setRepetition] = useState("");
   const [article, setArticle] = useState({
     url: "",
     title: "",
@@ -24,7 +26,10 @@ function AddArticle(props) {
     subject: "",
     series: "",
     tags: [],
+    repetition: "",
   });
+  const statusOptions = ["in_progress", "completed"];
+  const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
 
   useEffect(() => {
     setArticle({
@@ -34,8 +39,9 @@ function AddArticle(props) {
       subject: subject,
       series: series,
       tags: tags,
+      repetition: repetition,
     });
-  }, [url, title, status, subject, series, tags]);
+  }, [url, title, status, subject, series, tags, repetition]);
 
   const handleAdd = async () => {
     try {
@@ -53,6 +59,7 @@ function AddArticle(props) {
         setSubject("");
         setSeries("");
         setTags([]);
+        setRepetition("");
       }
       setResData(newData);
     } catch (error) {
@@ -102,11 +109,23 @@ function AddArticle(props) {
       </div>
 
       <div className={clsx(styles.formField)}>
-        <StatusInput setStatus={setStatus} />
+        <RadioInput
+          setValue={setStatus}
+          options={statusOptions}
+          id={"statusInput"}
+        />
       </div>
 
       <div className={clsx(styles.formField)}>
         <TagsInput tags={tags} setTags={setTags} />
+      </div>
+
+      <div className={clsx(styles.formField)}>
+        <RadioInput
+          setValue={setRepetition}
+          options={repetitionOptions}
+          id={"repetitionInput"}
+        />
       </div>
 
       <button className={clsx(styles.button)} onClick={handleAdd}>

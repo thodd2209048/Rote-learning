@@ -46,7 +46,9 @@ function TagsInput({ className, tags: articleTags, setTags }) {
 
   return (
     <div className={classes}>
-      <label>Tags: </label>
+      <label className={clsx(styles.label)}>
+        <span>Tags:</span>{" "}
+      </label>
       <div className={clsx(styles.input)}>
         <ul className={clsx(styles.tags)}>
           {articleTags.map((tag, index) => (
