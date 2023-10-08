@@ -7,7 +7,7 @@ import RadioOption from "./RadioOption/RadioOption";
 
 RadioInput.propTypes = {
   setValue: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   options: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
 };
@@ -16,7 +16,7 @@ function RadioInput({ className, value, setValue, label, options, id }) {
   const classes = clsx(className, styles.wrapper);
   return (
     <div className={classes}>
-      <label>{label} </label>
+      {label && <label>{label} </label>}
       <div className={clsx(styles.input)}>
         {options.map((option, idx) => (
           <RadioOption
