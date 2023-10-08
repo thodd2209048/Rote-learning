@@ -1,37 +1,39 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { ReactComponent as CloseSvg } from "~/assets/Images/close.svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 import SuggestionDropdown from "../../SuggestionDropdown/SuggestionDropdown";
 import styles from "./TagsInput.module.scss";
 import Tag from "~/components/TagComponents/Tag/Tag";
+import { ArticlesDataContext } from "~/App";
 
 TagsInput.propTypes = {
   tags: PropTypes.array.isRequired,
   setTags: PropTypes.func.isRequired,
 };
 
-function TagsInput({ className, tags, setTags }) {
+function TagsInput({ className, tags: articleTags, setTags }) {
+  const { tags: allTags } = useContext(ArticlesDataContext);
   const classes = clsx(className, styles.wrapper);
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   const removeTag = (tag, indexToRemove) => {
-    setTags(tags.filter((_, index) => index !== indexToRemove));
+    setTags(articleTags.filter((_, index) => index !== indexToRemove));
     setSuggestions((prevSuggestion) => [...prevSuggestion, tag]);
   };
 
   const addTag = (e) => {
     if (e.key === "Enter") {
-      setTags([...tags, e.target.value]);
+      setTags([...articleTags, e.target.value]);
       setInput("");
     }
   };
 
   const handleChoseItem = (item) => {
-    setTags([...tags, item]);
+    setTags([...articleTags, item]);
     setInput("");
     setSuggestions((prevSuggestion) =>
       prevSuggestion.filter((suggestion) => suggestion !== item)
@@ -39,24 +41,17 @@ function TagsInput({ className, tags, setTags }) {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await axios.get("http://localhost:8080/api/tags/tagNames");
-        const data = res.data;
-        setSuggestions(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-  }, []);
+    setSuggestions(Object.keys(allTags));
+  }, [allTags]);
 
   return (
     <div className={classes}>
-      <label>Tags: </label>
+      <label className={clsx(styles.label)}>
+        <span>Tags:</span>{" "}
+      </label>
       <div className={clsx(styles.input)}>
         <ul className={clsx(styles.tags)}>
-          {tags.map((tag, index) => (
+          {articleTags.map((tag, index) => (
             <li className={clsx(styles.tag)} key={index}>
               <Tag tagName={tag}>
                 <CloseSvg

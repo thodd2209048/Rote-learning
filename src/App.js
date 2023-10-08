@@ -11,6 +11,11 @@ export const ArticlesDataContext = createContext();
 function App() {
   const [articles, setArticles] = useState([]);
   const [tags, setTags] = useState([]);
+  const [triggerFetchData, setTriggerFetchData] = useState(false);
+
+  const toggleFetchData = () => {
+    setTriggerFetchData(triggerFetchData ? false : true);
+  };
 
   useEffect(() => {
     let tagCounts = {};
@@ -39,10 +44,12 @@ function App() {
       }
     }
     fetchData();
-  }, []);
+  }, [triggerFetchData]);
 
   return (
-    <ArticlesDataContext.Provider value={{ articles, tags }}>
+    <ArticlesDataContext.Provider
+      value={{ articles, tags, triggerFetchData, toggleFetchData }}
+    >
       <div className="App">
         <Routes>
           {publicRoutes.map((route, idx) => {

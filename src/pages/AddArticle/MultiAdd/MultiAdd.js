@@ -31,6 +31,9 @@ function MultiAdd(props) {
         subject: o.subject,
         tags: o.tags,
         status: o.status === "completed" ? "completed" : "in_progress",
+        repetition: o.repetition !== null ? o.repetition : "first read",
+        series: o.series,
+        type: o.type !== null && o.type !== "" ? o.type : "article",
       };
       handleAdd(newArticle);
     });

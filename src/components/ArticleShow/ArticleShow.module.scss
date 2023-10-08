@@ -1,37 +1,5 @@
-.article {
+.wrapper {
   display: block;
   margin-top: 15px;
   text-align: start;
-}
-.title {
-  font-size: 2rem;
-}
-.info {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.tags {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.tag {
-  margin: 3px 3px 3px 0;
-  //   padding: 0 8px;
-  //   border-radius: 3px;
-  //   background-color: var(--primary);
-  //   align-items: center;
-}
-
-.static {
-  position: relative;
-  margin-right: 5px;
-  padding-right: 5px;
-  border-right: 1px solid var(--text-color);
-
-  &:last-child {
-    border-right: none;
-  }
 }
