@@ -14,7 +14,7 @@ ArticleShow.propTypes = {
 
 function ArticleShow({ articlesList }) {
   return (
-    <div>
+    <div className={clsx(styles.wrapper)}>
       {articlesList.map((article, idx) => {
         return (
           <Article key={idx} article={article} />
