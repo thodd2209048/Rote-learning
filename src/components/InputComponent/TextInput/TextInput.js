@@ -6,21 +6,22 @@ import styles from "./TextInput.module.scss";
 
 TextInput.propTypes = {
   value: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired,
+  onChangeValue: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 
 function TextInput({
   className,
   value,
-  setValue,
+  onChangeValue,
   label,
   placeholder = "",
   id,
 }) {
   const classes = clsx(className, styles.wrapper);
+
   return (
     <div className={classes}>
       <label htmlFor={id}>{label}</label>
@@ -30,7 +31,7 @@ function TextInput({
           id={id}
           placeholder={placeholder}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => onChangeValue(e.target.value)}
         />
       </div>
     </div>

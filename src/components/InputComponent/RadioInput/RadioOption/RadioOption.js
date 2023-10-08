@@ -5,11 +5,11 @@ import clsx from "clsx";
 import styles from "./RadioOption.module.scss";
 
 RadioOption.propTypes = {
-  setValue: PropTypes.func.isRequired,
+  onChangeValue: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
 };
 
-function RadioOption({ className, value, setValue, option, id }) {
+function RadioOption({ className, value, onChangeValue, option, id }) {
   const classes = clsx(className, styles.wrapper);
 
   return (
@@ -22,7 +22,7 @@ function RadioOption({ className, value, setValue, option, id }) {
         id={id + option}
         name={id}
         onChange={() => {
-          setValue(option);
+          onChangeValue(option);
         }}
       />
     </div>

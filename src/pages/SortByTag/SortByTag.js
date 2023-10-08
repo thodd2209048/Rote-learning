@@ -35,6 +35,7 @@ function SortByTag(props) {
   useEffect(() => {
     setSortedArticleList(articles);
     handleSort(queryTag);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [articles, queryTag]);
 
   return (

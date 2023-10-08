@@ -6,13 +6,13 @@ import styles from "./RadioInput.module.scss";
 import RadioOption from "./RadioOption/RadioOption";
 
 RadioInput.propTypes = {
-  setValue: PropTypes.func.isRequired,
+  onChangeValue: PropTypes.func.isRequired,
   label: PropTypes.string,
   options: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
 };
 
-function RadioInput({ className, value, setValue, label, options, id }) {
+function RadioInput({ className, value, onChangeValue, label, options, id }) {
   const classes = clsx(className, styles.wrapper);
   return (
     <div className={classes}>
@@ -22,7 +22,7 @@ function RadioInput({ className, value, setValue, label, options, id }) {
           <RadioOption
             key={idx}
             value={value}
-            setValue={setValue}
+            onChangeValue={onChangeValue}
             option={option}
             id={id}
             className={clsx(styles.inputContainer)}

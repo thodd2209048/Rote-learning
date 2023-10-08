@@ -13,14 +13,6 @@ AddArticle.propTypes = {};
 
 function AddArticle(props) {
   const [resData, setResData] = useState(null);
-  const [url, setUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [status, setStatus] = useState("");
-  const [subject, setSubject] = useState("");
-  const [series, setSeries] = useState("");
-  const [tags, setTags] = useState([]);
-  const [type, setType] = useState("");
-  const [repetition, setRepetition] = useState("");
   const [article, setArticle] = useState({
     url: "",
     title: "",
@@ -31,40 +23,41 @@ function AddArticle(props) {
     status: "",
     repetition: "",
   });
+
   const statusOptions = ["in_progress", "completed"];
   const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
   const typeOptions = ["article", "video", "note"];
 
-  useEffect(() => {
+  const handleInputChange = (value, field) => {
     setArticle({
-      url: url,
-      title: title,
-      subject: subject,
-      series: series,
-      tags: tags,
-      type: type,
-      status: status,
-      repetition: repetition,
+      ...article,
+      [field]: value,
     });
-  }, [url, title, status, subject, series, tags, type, repetition]);
+  };
 
   const handleAdd = async () => {
     try {
-      if (url !== "" && title !== "" && subject !== "") {
+      if (
+        article.url !== "" &&
+        article.title !== "" &&
+        article.subject !== ""
+      ) {
         const res = await axios.post(
           "http://localhost:8080/api/article",
           article
         );
         const newData = res.data;
         if (!!newData) {
-          setUrl("");
-          setTitle("");
-          setSubject("");
-          setSeries("");
-          setTags([]);
-          setType("");
-          setStatus("completed");
-          setRepetition("first reading");
+          setArticle({
+            url: "",
+            title: "",
+            subject: "",
+            series: "",
+            tags: [],
+            type: "",
+            status: "",
+            repetition: "",
+          });
         }
         setResData(newData);
       }
@@ -72,8 +65,6 @@ function AddArticle(props) {
       console.log(error);
     }
   };
-  console.log("article", article);
-  console.log("resData", resData);
 
   return (
     <div className={clsx(styles.wrapper)}>
@@ -81,8 +72,8 @@ function AddArticle(props) {
 
       <div className={clsx(styles.formField)}>
         <TextInput
-          value={url}
-          setValue={setUrl}
+          value={article.url}
+          onChangeValue={(value) => handleInputChange(value, "url")}
           label={"URL:"}
           placeholder="http://"
           id={"urlInput"}
@@ -91,8 +82,8 @@ function AddArticle(props) {
 
       <div className={clsx(styles.formField)}>
         <TextInput
-          value={title}
-          setValue={setTitle}
+          value={article.title}
+          onChangeValue={(value) => handleInputChange(value, "title")}
           label={"Title:"}
           id={"titleInput"}
         />
@@ -100,8 +91,8 @@ function AddArticle(props) {
 
       <div className={clsx(styles.formField)}>
         <TextInput
-          value={subject}
-          setValue={setSubject}
+          value={article.subject}
+          onChangeValue={(value) => handleInputChange(value, "subject")}
           label={"Subject:"}
           id={"subjectInput"}
         />
@@ -109,22 +100,25 @@ function AddArticle(props) {
 
       <div className={clsx(styles.formField)}>
         <TextInput
-          value={series}
-          setValue={setSeries}
+          value={article.series}
+          onChangeValue={(value) => handleInputChange(value, "series")}
           label={"Series:"}
           id={"seriesInput"}
         />
       </div>
 
       <div className={clsx(styles.formField)}>
-        <TagsInput tags={tags} setTags={setTags} />
+        <TagsInput
+          tags={article.tags}
+          onChangeValue={(value) => handleInputChange(value, "tags")}
+        />
       </div>
 
       <div className={clsx(styles.formField)}>
         <RadioInput
           label={"Type:"}
-          value={type}
-          setValue={setType}
+          value={article.type}
+          onChangeValue={(value) => handleInputChange(value, "type")}
           options={typeOptions}
           id={"typeInput"}
         />
@@ -133,8 +127,8 @@ function AddArticle(props) {
       <div className={clsx(styles.formField)}>
         <RadioInput
           label={"Status:"}
-          value={status}
-          setValue={setStatus}
+          value={article.status}
+          onChangeValue={(value) => handleInputChange(value, "status")}
           options={statusOptions}
           id={"statusInput"}
         />
@@ -143,8 +137,8 @@ function AddArticle(props) {
       <div className={clsx(styles.formField)}>
         <RadioInput
           label={"Repetition:"}
-          value={repetition}
-          setValue={setRepetition}
+          value={article.repetition}
+          onChangeValue={(value) => handleInputChange(value, "repetition")}
           options={repetitionOptions}
           id={"repetitionInput"}
         />

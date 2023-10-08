@@ -13,8 +13,6 @@ RandomArticles.propTypes = {
 function RandomArticles({ className, numberOfArticles, originList }) {
   const [randomArticles, setRandomArticles] = useState([]);
 
-  const { triggerFetchData } = useContext(ArticlesDataContext);
-
   const getNewRandomArticles = (fullList) => {
     const newRandomNumbers = [];
     for (
@@ -35,8 +33,9 @@ function RandomArticles({ className, numberOfArticles, originList }) {
   };
 
   useEffect(() => {
+    console.log("fetch");
     getNewRandomArticles(originList);
-  }, [triggerFetchData]);
+  }, [originList]);
 
   return (
     <div className={clsx(className, styles.wrapper, "container")}>

@@ -11,29 +11,29 @@ import { ArticlesDataContext } from "~/App";
 
 TagsInput.propTypes = {
   tags: PropTypes.array.isRequired,
-  setTags: PropTypes.func.isRequired,
+  onChangeValue: PropTypes.func.isRequired,
 };
 
-function TagsInput({ className, tags: articleTags, setTags }) {
+function TagsInput({ className, tags: articleTags, onChangeValue }) {
   const { tags: allTags } = useContext(ArticlesDataContext);
   const classes = clsx(className, styles.wrapper);
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   const removeTag = (tag, indexToRemove) => {
-    setTags(articleTags.filter((_, index) => index !== indexToRemove));
+    onChangeValue(articleTags.filter((_, index) => index !== indexToRemove));
     setSuggestions((prevSuggestion) => [...prevSuggestion, tag]);
   };
 
   const addTag = (e) => {
     if (e.key === "Enter") {
-      setTags([...articleTags, e.target.value]);
+      onChangeValue([...articleTags, e.target.value]);
       setInput("");
     }
   };
 
   const handleChoseItem = (item) => {
-    setTags([...articleTags, item]);
+    onChangeValue([...articleTags, item]);
     setInput("");
     setSuggestions((prevSuggestion) =>
       prevSuggestion.filter((suggestion) => suggestion !== item)
