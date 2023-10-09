@@ -6,6 +6,7 @@ import styles from "./Article.module.scss";
 import Tag from "~/components/TagComponents/Tag/Tag";
 import axios from "axios";
 import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
+import Button from "~/components/Button/Button";
 
 Article.propTypes = {};
 
@@ -58,13 +59,15 @@ function Article({ className, article }) {
         <RadioInput
           className={clsx(styles.repetition)}
           value={repetition}
-          setValue={setRepetition}
+          onChangeValue={(value) => setRepetition(value)}
           options={repetitionOptions}
           id={`repetitionInput${article.id}`}
         />
         <div className={clsx(styles.update)}>
           {isUpdated && <span>Updated</span>}
-          <button onClick={editArticle}>Updated</button>
+          <Button callToAction={true} onClick={editArticle}>
+            Updated
+          </Button>
         </div>
       </div>
     </div>

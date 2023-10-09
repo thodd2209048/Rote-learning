@@ -8,6 +8,7 @@ import TextInput from "~/components/InputComponent/TextInput/TextInput";
 import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
 import styles from "./AddArticle.module.scss";
 import MultiAdd from "./MultiAdd/MultiAdd";
+import Button from "~/components/Button/Button";
 
 AddArticle.propTypes = {};
 
@@ -147,6 +148,9 @@ function AddArticle(props) {
       <button className={clsx(styles.button)} onClick={handleAdd}>
         Add
       </button>
+      <Button callToAction onClick={handleAdd}>
+        Add
+      </Button>
 
       <div className={clsx(styles.result)}>
         {resData && (
