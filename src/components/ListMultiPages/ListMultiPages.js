@@ -30,7 +30,9 @@ function ListMultiPages({ list, articlePerPage }) {
         >
           Prev
         </button>
-        <span>Page: {currentPage}</span>
+        <span>
+          Page: {currentPage} / {maxPage}
+        </span>
         <button
           className={clsx(styles.button)}
           onClick={() =>

@@ -16,6 +16,7 @@ FilterPage.propTypes = {};
 function FilterPage(className) {
   const classes = clsx(className, styles.wrapper, "container");
   const [filteredArticle, setFilteredArticle] = useState([]);
+  const [isDesc, setIsDesc] = useState(false);
   const [filterInputs, setFilterInputs] = useState({
     title: "",
     subject: "",
@@ -29,42 +30,54 @@ function FilterPage(className) {
   const { typeOptions, statusOptions, repetitionOptions, articles } =
     useContext(ArticlesDataContext);
 
+  const toggleDesc = () => {
+    setIsDesc(isDesc === true ? false : true);
+    handleFilter();
+  };
+
   const handleFilter = () => {
     setFilteredArticle(
-      articles.filter((article) => {
-        const titleFilter =
-          !filterInputs.title || article.title.includes(filterInputs.title);
-        const subjectFilter =
-          !filterInputs.subject ||
-          article.subject.includes(filterInputs.subject);
-        const seriesFilter =
-          !filterInputs.series || article.series.includes(filterInputs.series);
-        const typeFilter =
-          !filterInputs.type ||
-          (article.type !== null && article.type.includes(filterInputs.type));
-        const statusFilter =
-          !filterInputs.status ||
-          (article.status !== null &&
-            article.status.includes(filterInputs.status));
-        const repetitionFilter =
-          !filterInputs.repetition ||
-          (article.repetition !== null &&
-            article.repetition.includes(filterInputs.repetition));
-        const tagFilter =
-          !filterInputs.tags ||
-          (article.tags.length > 0 &&
-            filterInputs.tags.every((tag) => article.tags.includes(tag)));
+      articles
+        .filter((article) => {
+          const titleFilter =
+            !filterInputs.title || article.title.includes(filterInputs.title);
+          const subjectFilter =
+            !filterInputs.subject ||
+            article.subject.includes(filterInputs.subject);
+          const seriesFilter =
+            !filterInputs.series ||
+            article.series.includes(filterInputs.series);
+          const typeFilter =
+            !filterInputs.type ||
+            (article.type !== null && article.type.includes(filterInputs.type));
+          const statusFilter =
+            !filterInputs.status ||
+            (article.status !== null &&
+              article.status.includes(filterInputs.status));
+          const repetitionFilter =
+            !filterInputs.repetition ||
+            (article.repetition !== null &&
+              article.repetition.includes(filterInputs.repetition));
+          const tagFilter =
+            !filterInputs.tags ||
+            (article.tags.length > 0 &&
+              filterInputs.tags.every((tag) => article.tags.includes(tag)));
 
-        return (
-          subjectFilter &&
-          titleFilter &&
-          seriesFilter &&
-          typeFilter &&
-          statusFilter &&
-          repetitionFilter &&
-          tagFilter
-        );
-      })
+          return (
+            subjectFilter &&
+            titleFilter &&
+            seriesFilter &&
+            typeFilter &&
+            statusFilter &&
+            repetitionFilter &&
+            tagFilter
+          );
+        })
+        .sort((a, b) => {
+          return isDesc
+            ? a.createdAt.localeCompare(b.createdAt)
+            : b.createdAt.localeCompare(a.createdAt);
+        })
     );
   };
 
@@ -140,6 +153,13 @@ function FilterPage(className) {
             onChangeValue={(value) => handleInputChange(value, "tags")}
             // label={"Tag"}
           />
+          <span>Sort by createdAt:</span>
+          <Button
+            className={clsx(styles.createdAtSortBtn)}
+            onClick={toggleDesc}
+          >
+            {isDesc ? "Des" : "Asc"}
+          </Button>
         </div>
       </div>
       <div className={clsx(styles.buttons)}>
