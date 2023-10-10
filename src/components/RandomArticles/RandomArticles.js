@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { ArticlesDataContext } from "~/App";
 import { ArticleShow } from "~/components/ArticleShow";
 import styles from "./RandomArticles.module.scss";
+import Button from "../Button/Button";
 
 RandomArticles.propTypes = {
   numberOfArticles: PropTypes.number.isRequired,
@@ -43,12 +44,12 @@ function RandomArticles({ className, numberOfArticles, originList }) {
         <div>
           <h1 className="text-center">Random</h1>
         </div>
-        <button
-          className={clsx(styles.button)}
+        <Button
+          callToAction={true}
           onClick={() => getNewRandomArticles(originList)}
         >
           Refresh
-        </button>
+        </Button>
       </header>
 
       {randomArticles.length > 0 && (

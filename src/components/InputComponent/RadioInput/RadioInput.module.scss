@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  width: 600px;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   & input {
@@ -13,13 +13,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 500px;
+  width: 80%;
+  gap: 5px;
 }
 .inputContainer {
   display: flex;
   flex-direction: row;
   height: 1.4rem;
-  margin-left: 2rem;
+  margin-left: 1rem;
   align-items: center;
   gap: 5px;
 

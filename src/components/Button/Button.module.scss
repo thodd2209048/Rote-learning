@@ -1,0 +1,18 @@
+.wrapper {
+  min-width: 50px;
+  padding: 0px 4px;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: 1px solid black;
+}
+
+.callToAction {
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  background-color: var(--background-color);
+
+  &:hover {
+    background-color: var(--hover-color);
+  }
+}

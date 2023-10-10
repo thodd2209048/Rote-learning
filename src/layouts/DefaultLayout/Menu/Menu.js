@@ -13,6 +13,7 @@ function Menu({ className }) {
     <div className={classes}>
       <h1>Menu</h1>
       <Link to={"/addArticle"}>Add article</Link>
+      <Link to={"/filter"}>Search</Link>
     </div>
   );
 }

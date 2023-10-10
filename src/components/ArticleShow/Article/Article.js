@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
@@ -6,6 +6,8 @@ import styles from "./Article.module.scss";
 import Tag from "~/components/TagComponents/Tag/Tag";
 import axios from "axios";
 import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
+import Button from "~/components/Button/Button";
+import { ArticlesDataContext } from "~/App";
 
 Article.propTypes = {};
 
@@ -14,6 +16,8 @@ function Article({ className, article }) {
   const [repetition, setRepetition] = useState(article.repetition);
   const [articleData, setArticleData] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
+
+  const { toggleFetchData } = useContext(ArticlesDataContext);
 
   const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
 
@@ -29,9 +33,14 @@ function Article({ className, article }) {
         setTimeout(() => {
           setIsUpdated(false);
         }, 2000);
+        toggleFetchData();
       }
     }
   };
+
+  useEffect(() => {
+    setRepetition(article.repetition);
+  }, [article]);
 
   return (
     <div className={classes}>
@@ -58,13 +67,15 @@ function Article({ className, article }) {
         <RadioInput
           className={clsx(styles.repetition)}
           value={repetition}
-          setValue={setRepetition}
+          onChangeValue={(value) => setRepetition(value)}
           options={repetitionOptions}
           id={`repetitionInput${article.id}`}
         />
         <div className={clsx(styles.update)}>
           {isUpdated && <span>Updated</span>}
-          <button onClick={editArticle}>Updated</button>
+          <Button callToAction={true} onClick={editArticle}>
+            Updated
+          </Button>
         </div>
       </div>
     </div>
