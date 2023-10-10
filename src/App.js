@@ -17,6 +17,10 @@ function App() {
     setTriggerFetchData(triggerFetchData ? false : true);
   };
 
+  const statusOptions = ["in_progress", "completed"];
+  const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
+  const typeOptions = ["article", "video", "note"];
+
   useEffect(() => {
     let tagCounts = {};
     const countTag = (article) => {
@@ -48,7 +52,15 @@ function App() {
 
   return (
     <ArticlesDataContext.Provider
-      value={{ articles, tags, triggerFetchData, toggleFetchData }}
+      value={{
+        articles,
+        tags,
+        triggerFetchData,
+        toggleFetchData,
+        statusOptions,
+        repetitionOptions,
+        typeOptions,
+      }}
     >
       <div className="App">
         <Routes>

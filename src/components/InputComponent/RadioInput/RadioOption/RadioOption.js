@@ -9,7 +9,13 @@ RadioOption.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-function RadioOption({ className, value, onChangeValue, option, id }) {
+function RadioOption({
+  className,
+  value: checkedValue,
+  onChangeValue,
+  option,
+  id,
+}) {
   const classes = clsx(className, styles.wrapper);
 
   return (
@@ -18,7 +24,7 @@ function RadioOption({ className, value, onChangeValue, option, id }) {
       <input
         type="radio"
         value={option}
-        checked={value === option}
+        checked={checkedValue === option}
         id={id + option}
         name={id}
         onChange={() => {

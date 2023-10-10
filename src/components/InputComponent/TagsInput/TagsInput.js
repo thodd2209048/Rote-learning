@@ -15,8 +15,8 @@ TagsInput.propTypes = {
 };
 
 function TagsInput({ className, tags: articleTags, onChangeValue }) {
-  const { tags: allTags } = useContext(ArticlesDataContext);
   const classes = clsx(className, styles.wrapper);
+  const { tags: allTags } = useContext(ArticlesDataContext);
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
