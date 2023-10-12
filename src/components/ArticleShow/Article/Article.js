@@ -48,13 +48,16 @@ function Article({ className, article }) {
         <h4 className={clsx(styles.title)}>{article.title}</h4>
       </a>
       <div className={clsx(styles.info)}>
+        <span className={clsx(styles.static)}>ID: {article.id}</span>
         <span className={clsx(styles.static)}>subject: {article.subject}</span>
 
         {/* <MultiTag tagRender={article.tags} /> */}
         <span className={clsx(styles.static)}>
           last time read: {article.lastTimeRead}
         </span>
-        <span className={clsx(styles.static)}>ID: {article.id}</span>
+        <span className={clsx(styles.static)}>
+          next time read: {article.nextTimeRead}
+        </span>
       </div>
 
       <span className={clsx(styles.tags)}>

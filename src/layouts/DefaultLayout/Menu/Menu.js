@@ -14,6 +14,7 @@ function Menu({ className }) {
       <h1>Menu</h1>
       <Link to={"/addArticle"}>Add article</Link>
       <Link to={"/filter"}>Search</Link>
+      <Link to={"/repetition"}>Repetition</Link>
     </div>
   );
 }
