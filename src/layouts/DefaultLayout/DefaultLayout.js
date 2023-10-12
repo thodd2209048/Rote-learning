@@ -13,7 +13,7 @@ function DefaultLayout({ children }) {
       <Link to={"/"} className={clsx(styles.header)}>
         ROTE LEARNING
       </Link>
-      <div className={clsx(styles.content, ["container"])}>
+      <div className={clsx(styles.content, ["container-fluid"])}>
         <div className={clsx(styles.menu)}>
           <Menu />
         </div>

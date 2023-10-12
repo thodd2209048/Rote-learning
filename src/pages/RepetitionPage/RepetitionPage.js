@@ -9,7 +9,7 @@ import clsx from "clsx";
 RepetitionPage.propTypes = {};
 
 function RepetitionPage({ className }) {
-  const classes = clsx(className, styles.wrapper);
+  const classes = clsx(className, styles.wrapper, "container");
   const [articlesToRecall, setArticlesToReCall] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,14 @@ function RepetitionPage({ className }) {
 
   return (
     <div className={classes}>
-      <ListMultiPages list={articlesToRecall} articlePerPage={5} />
+      <h1 className={clsx(styles.title)}>Recall</h1>
+      {articlesToRecall.length > 0 ? (
+        <ListMultiPages list={articlesToRecall} articlePerPage={5} />
+      ) : (
+        <span>
+          WELL DONE! You have read all the articles you need to remember
+        </span>
+      )}
     </div>
   );
 }

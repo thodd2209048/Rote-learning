@@ -34,7 +34,6 @@ function RandomArticles({ className, numberOfArticles, originList }) {
   };
 
   useEffect(() => {
-    console.log("fetch");
     getNewRandomArticles(originList);
   }, [originList]);
 

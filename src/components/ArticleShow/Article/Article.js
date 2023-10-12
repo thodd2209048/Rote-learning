@@ -24,7 +24,7 @@ function Article({ className, article }) {
   const editArticle = async () => {
     if (repetition !== null) {
       const res = await axios.put(
-        `http://localhost:8080/api/article/${article.id}`,
+        `http://localhost:8080/api/article/updateRepetition/${article.id}`,
         { repetition: repetition }
       );
       if (!!res) {
@@ -49,15 +49,18 @@ function Article({ className, article }) {
       </a>
       <div className={clsx(styles.info)}>
         <span className={clsx(styles.static)}>ID: {article.id}</span>
+
         <span className={clsx(styles.static)}>subject: {article.subject}</span>
 
-        {/* <MultiTag tagRender={article.tags} /> */}
         <span className={clsx(styles.static)}>
           last time read: {article.lastTimeRead}
         </span>
-        <span className={clsx(styles.static)}>
-          next time read: {article.nextTimeRead}
-        </span>
+
+        {article.nextTimeRead && (
+          <span className={clsx(styles.static)}>
+            next time read: {article.nextTimeRead}
+          </span>
+        )}
       </div>
 
       <span className={clsx(styles.tags)}>
