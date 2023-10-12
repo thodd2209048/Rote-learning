@@ -2,6 +2,17 @@
   width: 100%;
 }
 
-.random {
-  border-bottom: 1px solid var(--primary);
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "repetition" "newArticles";
+  gap: 10px;
+}
+
+.repetition {
+  grid-area: "repetition";
+}
+
+.newArticles {
+  grid-area: "newArticles";
 }

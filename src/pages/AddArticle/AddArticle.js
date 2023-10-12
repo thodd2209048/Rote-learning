@@ -145,9 +145,6 @@ function AddArticle(props) {
         />
       </div>
 
-      <button className={clsx(styles.button)} onClick={handleAdd}>
-        Add
-      </button>
       <Button callToAction onClick={handleAdd}>
         Add
       </Button>

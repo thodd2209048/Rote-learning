@@ -4,6 +4,7 @@ import { DefaultLayout } from "~/layouts/DefaultLayout";
 import { AddArticle } from "~/pages/AddArticle";
 import { FilterPage } from "~/pages/FilterPage";
 import { HomePage } from "~/pages/HomePage";
+import RandomPage from "~/pages/RandomPage/RandomPage";
 import RepetitionPage from "~/pages/RepetitionPage/RepetitionPage";
 import { SortByTag } from "~/pages/SortByTag";
 
@@ -13,6 +14,7 @@ const publicRoutes = [
   { path: "/addArticle", component: AddArticle, layout: DefaultLayout },
   { path: "/filter", component: FilterPage, layout: DefaultLayout },
   { path: "/repetition", component: RepetitionPage, layout: DefaultLayout },
+  { path: "/random", component: RandomPage, layout: DefaultLayout },
 ];
 
 //Private routes
