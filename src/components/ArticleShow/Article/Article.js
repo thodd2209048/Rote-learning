@@ -8,13 +8,14 @@ import axios from "axios";
 import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
 import Button from "~/components/Button/Button";
 import { ArticlesDataContext } from "~/App";
+import { Link, useNavigate } from "react-router-dom";
 
 Article.propTypes = {};
 
 function Article({ className, article }) {
   const classes = clsx(className, styles.wrapper);
+  const navigate = useNavigate();
   const [repetition, setRepetition] = useState(article.repetition);
-  const [articleData, setArticleData] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
 
   const { toggleFetchData } = useContext(ArticlesDataContext);
@@ -55,6 +56,9 @@ function Article({ className, article }) {
         <span className={clsx(styles.static)}>
           last time read: {article.lastTimeRead}
         </span>
+        <span className={clsx(styles.static)}>
+          repetition: {article.repetition}
+        </span>
 
         {article.nextTimeRead && (
           <span className={clsx(styles.static)}>
@@ -81,6 +85,9 @@ function Article({ className, article }) {
           {isUpdated && <span>Updated</span>}
           <Button callToAction={true} onClick={editArticle}>
             Updated
+          </Button>
+          <Button onClick={() => navigate(`/edit?id=${article.id}`)}>
+            Edit
           </Button>
         </div>
       </div>

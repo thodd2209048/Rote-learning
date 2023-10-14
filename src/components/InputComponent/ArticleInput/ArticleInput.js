@@ -1,29 +1,18 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+import styles from "./ArticleInput.module.scss";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import TextInput from "../TextInput/TextInput";
+import TagsInput from "../TagsInput/TagsInput";
+import RadioInput from "../RadioInput/RadioInput";
 
-import axios from "axios";
-import StatusInput from "~/components/InputComponent/StatusInput/StatusInput";
-import TagsInput from "~/components/InputComponent/TagsInput/TagsInput";
-import TextInput from "~/components/InputComponent/TextInput/TextInput";
-import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
-import styles from "./AddArticle.module.scss";
-import MultiAdd from "./MultiAdd/MultiAdd";
-import Button from "~/components/Button/Button";
+ArticleInput.propTypes = {
+  className: PropTypes.string,
+};
 
-AddArticle.propTypes = {};
-
-function AddArticle(props) {
-  const [resData, setResData] = useState(null);
-  const [article, setArticle] = useState({
-    url: "",
-    title: "",
-    subject: "",
-    series: "",
-    tags: [],
-    type: "",
-    status: "",
-    repetition: "",
-  });
+function ArticleInput({ className, article, setArticle }) {
+  const classes = clsx(className, styles.wrapper);
 
   const statusOptions = ["in_progress", "completed"];
   const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
@@ -35,42 +24,8 @@ function AddArticle(props) {
       [field]: value,
     });
   };
-
-  const handleAdd = async () => {
-    try {
-      if (
-        article.url !== "" &&
-        article.title !== "" &&
-        article.subject !== ""
-      ) {
-        const res = await axios.post(
-          "http://localhost:8080/api/article",
-          article
-        );
-        const newData = res.data;
-        if (!!newData) {
-          setArticle({
-            url: "",
-            title: "",
-            subject: "",
-            series: "",
-            tags: [],
-            type: "",
-            status: "",
-            repetition: "",
-          });
-        }
-        setResData(newData);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
-    <div className={clsx(styles.wrapper)}>
-      <h1>Add new article</h1>
-
+    <div className={classes}>
       <div className={clsx(styles.formField)}>
         <TextInput
           value={article.url}
@@ -144,36 +99,8 @@ function AddArticle(props) {
           id={"repetitionInput"}
         />
       </div>
-
-      <Button callToAction onClick={handleAdd}>
-        Add
-      </Button>
-
-      <div className={clsx(styles.result)}>
-        {resData && (
-          <>
-            <h4>Article is added</h4>
-            <p>URL: {resData.url}</p>
-            <p>Title: {resData.title}</p>
-            <p>Status: {resData.status}</p>
-            <p>Subject: {resData.subject}</p>
-            <p>Series: {resData.series}</p>
-            <div className={clsx(styles.tags)}>
-              <span>Tags: </span>
-              {resData.tags.map((tag, index) => (
-                <span className={clsx(styles.tag)} key={index}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <p>Repetition: {resData.repetition}</p>
-          </>
-        )}
-      </div>
-
-      <MultiAdd />
     </div>
   );
 }
 
-export default AddArticle;
+export default ArticleInput;
