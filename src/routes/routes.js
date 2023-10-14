@@ -2,6 +2,7 @@
 
 import { DefaultLayout } from "~/layouts/DefaultLayout";
 import { AddArticle } from "~/pages/AddArticle";
+import EditArticlePage from "~/pages/EditArticlePage/EditArticlePage";
 import { FilterPage } from "~/pages/FilterPage";
 import { HomePage } from "~/pages/HomePage";
 import RandomPage from "~/pages/RandomPage/RandomPage";
@@ -15,6 +16,7 @@ const publicRoutes = [
   { path: "/filter", component: FilterPage, layout: DefaultLayout },
   { path: "/repetition", component: RepetitionPage, layout: DefaultLayout },
   { path: "/random", component: RandomPage, layout: DefaultLayout },
+  { path: "/edit", component: EditArticlePage, layout: DefaultLayout },
 ];
 
 //Private routes

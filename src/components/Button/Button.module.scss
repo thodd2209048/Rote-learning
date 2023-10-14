@@ -5,6 +5,14 @@
   font-size: 1.6rem;
   font-weight: 600;
   border: 1px solid black;
+
+  a:hover {
+    color: currentColor;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 .callToAction {
