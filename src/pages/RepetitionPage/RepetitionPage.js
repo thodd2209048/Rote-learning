@@ -5,6 +5,7 @@ import styles from "./RepetitionPage.module.scss";
 import axios from "axios";
 import { ListMultiPages } from "~/components/ListMultiPages";
 import clsx from "clsx";
+import { fetchArticlesToRecall } from "~/services/ApiServices";
 
 RepetitionPage.propTypes = {};
 
@@ -14,16 +15,8 @@ function RepetitionPage({ className }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:8080/api/article/shouldRead"
-        );
-        if (res.status === 200) {
-          setArticlesToReCall(res.data);
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      const articles = await fetchArticlesToRecall();
+      setArticlesToReCall(articles);
     };
     fetchData();
   }, []);

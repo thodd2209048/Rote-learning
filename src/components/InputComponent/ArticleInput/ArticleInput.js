@@ -6,6 +6,11 @@ import clsx from "clsx";
 import TextInput from "../TextInput/TextInput";
 import TagsInput from "../TagsInput/TagsInput";
 import RadioInput from "../RadioInput/RadioInput";
+import {
+  repetitionOptions,
+  statusOptions,
+  typeOptions,
+} from "~/utils/constants";
 
 ArticleInput.propTypes = {
   className: PropTypes.string,
@@ -13,10 +18,6 @@ ArticleInput.propTypes = {
 
 function ArticleInput({ className, article, setArticle }) {
   const classes = clsx(className, styles.wrapper);
-
-  const statusOptions = ["in_progress", "completed"];
-  const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
-  const typeOptions = ["article", "video", "note"];
 
   const handleInputChange = (value, field) => {
     setArticle({

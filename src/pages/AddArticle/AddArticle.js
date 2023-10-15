@@ -9,12 +9,12 @@ import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
 import styles from "./AddArticle.module.scss";
 import MultiAdd from "./MultiAdd/MultiAdd";
 import Button from "~/components/Button/Button";
+import { createArticle } from "~/services/ApiServices";
 
 AddArticle.propTypes = {};
 
 function AddArticle(props) {
-  const [resData, setResData] = useState(null);
-  const [article, setArticle] = useState({
+  const emptyArticle = {
     url: "",
     title: "",
     subject: "",
@@ -23,7 +23,9 @@ function AddArticle(props) {
     type: "",
     status: "",
     repetition: "",
-  });
+  };
+  const [resData, setResData] = useState(null);
+  const [article, setArticle] = useState(emptyArticle);
 
   const statusOptions = ["in_progress", "completed"];
   const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
@@ -36,34 +38,13 @@ function AddArticle(props) {
     });
   };
 
-  const handleAdd = async () => {
-    try {
-      if (
-        article.url !== "" &&
-        article.title !== "" &&
-        article.subject !== ""
-      ) {
-        const res = await axios.post(
-          "http://localhost:8080/api/article",
-          article
-        );
-        const newData = res.data;
-        if (!!newData) {
-          setArticle({
-            url: "",
-            title: "",
-            subject: "",
-            series: "",
-            tags: [],
-            type: "",
-            status: "",
-            repetition: "",
-          });
-        }
+  const handleCreate = async () => {
+    if (article.url !== "" && article.title !== "" && article.subject !== "") {
+      const newData = await createArticle(article);
+      if (newData) {
+        setArticle(emptyArticle);
         setResData(newData);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -145,7 +126,7 @@ function AddArticle(props) {
         />
       </div>
 
-      <Button callToAction onClick={handleAdd}>
+      <Button callToAction onClick={handleCreate}>
         Add
       </Button>
 

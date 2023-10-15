@@ -7,10 +7,11 @@ import axios from "axios";
 import styles from "./ArticleUpdateBtns.module.scss";
 import { ArticlesDataContext } from "~/App";
 import Button from "~/components/Button/Button";
+import { updateArticleRepetition } from "~/services/ApiServices";
 
 ArticleUpdateBtns.propTypes = {
   className: PropTypes.string,
-  repetition: PropTypes.string.isRequired,
+  repetition: PropTypes.string,
   article: PropTypes.object.isRequired,
 };
 
@@ -21,14 +22,26 @@ function ArticleUpdateBtns({ className, repetition, article }) {
   const { toggleFetchData } = useContext(ArticlesDataContext);
   const navigate = useNavigate();
 
+  // const editArticle = async () => {
+  //   if (repetition !== null) {
+  //     const res = await axios.put(
+  //       `http://localhost:8080/api/article/updateRepetition/${article.id}`,
+  //       { repetition: repetition }
+  //     );
+  //     if (!!res) {
+  //       setIsUpdated(true);
+  //       setTimeout(() => {
+  //         setIsUpdated(false);
+  //       }, 2000);
+  //       toggleFetchData();
+  //     }
+  //   }
+  // };
+
   const editArticle = async () => {
     if (repetition !== null) {
-      const res = await axios.put(
-        `http://localhost:8080/api/article/updateRepetition/${article.id}`,
-        { repetition: repetition }
-      );
-      if (!!res) {
-        console.log(res);
+      const success = await updateArticleRepetition(article.id, repetition);
+      if (success) {
         setIsUpdated(true);
         setTimeout(() => {
           setIsUpdated(false);
@@ -40,10 +53,19 @@ function ArticleUpdateBtns({ className, repetition, article }) {
   return (
     <div className={classes}>
       {isUpdated && <span>Updated</span>}
-      <Button callToAction={true} onClick={editArticle}>
+      <Button
+        className={clsx(styles.btn)}
+        callToAction={true}
+        onClick={editArticle}
+      >
         Updated
       </Button>
-      <Button onClick={() => navigate(`/edit?id=${article.id}`)}>Edit</Button>
+      <Button
+        className={clsx(styles.btn)}
+        onClick={() => navigate(`/edit?id=${article.id}`)}
+      >
+        Edit
+      </Button>
     </div>
   );
 }
