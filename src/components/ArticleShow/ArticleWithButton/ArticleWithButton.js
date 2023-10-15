@@ -1,43 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 
-import styles from "./Article.module.scss";
-import Tag from "~/components/TagComponents/Tag/Tag";
-import axios from "axios";
 import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
-import Button from "~/components/Button/Button";
-import { ArticlesDataContext } from "~/App";
-import { Link, useNavigate } from "react-router-dom";
+import Tag from "~/components/TagComponents/Tag/Tag";
+import ArticleUpdateBtns from "./ArticleUpdateBtns/ArticleUpdateBtns";
+import styles from "./ArticleWithButton.module.scss";
 
 Article.propTypes = {};
 
-function Article({ className, article }) {
+function Article({ className, article, updateBtns }) {
   const classes = clsx(className, styles.wrapper);
-  const navigate = useNavigate();
   const [repetition, setRepetition] = useState(article.repetition);
-  const [isUpdated, setIsUpdated] = useState(false);
-
-  const { toggleFetchData } = useContext(ArticlesDataContext);
 
   const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
-
-  const editArticle = async () => {
-    if (repetition !== null) {
-      const res = await axios.put(
-        `http://localhost:8080/api/article/updateRepetition/${article.id}`,
-        { repetition: repetition }
-      );
-      if (!!res) {
-        console.log(res);
-        setIsUpdated(true);
-        setTimeout(() => {
-          setIsUpdated(false);
-        }, 2000);
-        toggleFetchData();
-      }
-    }
-  };
 
   useEffect(() => {
     setRepetition(article.repetition);
@@ -81,15 +56,13 @@ function Article({ className, article }) {
           options={repetitionOptions}
           id={`repetitionInput${article.id}`}
         />
-        <div className={clsx(styles.update)}>
-          {isUpdated && <span>Updated</span>}
-          <Button callToAction={true} onClick={editArticle}>
-            Updated
-          </Button>
-          <Button onClick={() => navigate(`/edit?id=${article.id}`)}>
-            Edit
-          </Button>
-        </div>
+        {updateBtns && (
+          <ArticleUpdateBtns
+            className={clsx(styles.update)}
+            repetition={repetition}
+            article={article}
+          />
+        )}
       </div>
     </div>
   );

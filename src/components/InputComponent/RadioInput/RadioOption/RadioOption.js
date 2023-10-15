@@ -18,19 +18,19 @@ function RadioOption({
 }) {
   const classes = clsx(className, styles.wrapper);
 
+  const optionStyle =
+    checkedValue === option ? styles.checked : styles.unchecked;
+
   return (
     <div className={classes}>
-      <label htmlFor={id + option}>{option}</label>
-      <input
-        type="radio"
-        value={option}
-        checked={checkedValue === option}
-        id={id + option}
-        name={id}
-        onChange={() => {
+      <div
+        className={clsx(styles.option, optionStyle)}
+        onClick={() => {
           onChangeValue(option);
         }}
-      />
+      >
+        {option}
+      </div>
     </div>
   );
 }

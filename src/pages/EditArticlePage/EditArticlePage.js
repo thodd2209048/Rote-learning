@@ -6,7 +6,7 @@ import clsx from "clsx";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
-import Article from "~/components/ArticleShow/Article/Article";
+import Article from "~/components/ArticleShow/ArticleWithButton/ArticleWithButton";
 import ArticleInput from "~/components/InputComponent/ArticleInput/ArticleInput";
 import Button from "~/components/Button/Button";
 import TextInput from "~/components/InputComponent/TextInput/TextInput";

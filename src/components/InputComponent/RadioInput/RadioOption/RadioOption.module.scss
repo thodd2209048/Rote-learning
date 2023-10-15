@@ -1,2 +1,17 @@
 .wrapper {
 }
+
+.option {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-width: 2.6rem;
+  padding: 0 3px;
+  border: 1px solid black;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.checked {
+  background-color: var(--primary);
+}

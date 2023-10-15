@@ -3,10 +3,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 
 import styles from "./ArticleShow.module.scss";
-import MultiTag from "../TagComponents/MultiTag/MultiTag";
-import Tag from "../TagComponents/Tag/Tag";
-import RadioInput from "../InputComponent/RadioInput/RadioInput";
-import Article from "./Article/Article";
+import ArticleWithButton from "./ArticleWithButton/ArticleWithButton";
 
 ArticleShow.propTypes = {
   articlesList: PropTypes.array.isRequired,
@@ -17,7 +14,7 @@ function ArticleShow({ articlesList }) {
     <div className={clsx(styles.wrapper)}>
       {articlesList.map((article, idx) => {
         return (
-          <Article key={idx} article={article} />
+          <ArticleWithButton updateBtns key={idx} article={article} />
           // eslint-disable-next-line react/jsx-no-target-blank
           // <div className={clsx(styles.article)}>
           //   <a
