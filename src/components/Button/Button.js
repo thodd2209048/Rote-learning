@@ -19,6 +19,8 @@ function Button({
   className,
   onClick,
   callToAction,
+  leftIcon,
+  rightIcon,
   ...passProps
 }) {
   const classes = clsx(
@@ -42,7 +44,9 @@ function Button({
   }
   return (
     <Comp className={classes} {...props}>
+      {leftIcon && <span className={clsx(styles.icon)}>{leftIcon}</span>}
       <span>{children}</span>
+      {rightIcon && <span className={clsx(styles.icon)}>{rightIcon}</span>}
     </Comp>
   );
 }

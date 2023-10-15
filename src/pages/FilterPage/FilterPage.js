@@ -96,6 +96,7 @@ function FilterPage(className) {
 
   return (
     <div className={classes}>
+      <h1>Search</h1>
       <div className={clsx(styles.inputs)}>
         <div className={clsx(styles.inputsRow)}>
           <TextInput

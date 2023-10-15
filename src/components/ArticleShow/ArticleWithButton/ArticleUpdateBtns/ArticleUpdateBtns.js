@@ -22,22 +22,6 @@ function ArticleUpdateBtns({ className, repetition, article }) {
   const { toggleFetchData } = useContext(ArticlesDataContext);
   const navigate = useNavigate();
 
-  // const editArticle = async () => {
-  //   if (repetition !== null) {
-  //     const res = await axios.put(
-  //       `http://localhost:8080/api/article/updateRepetition/${article.id}`,
-  //       { repetition: repetition }
-  //     );
-  //     if (!!res) {
-  //       setIsUpdated(true);
-  //       setTimeout(() => {
-  //         setIsUpdated(false);
-  //       }, 2000);
-  //       toggleFetchData();
-  //     }
-  //   }
-  // };
-
   const editArticle = async () => {
     if (repetition !== null) {
       const success = await updateArticleRepetition(article.id, repetition);

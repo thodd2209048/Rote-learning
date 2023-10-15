@@ -16,16 +16,13 @@ function Menu({ className }) {
 
   return (
     <div className={classes}>
-      <h1>Menu</h1>
       <NavLink to={"/"} className={navLinkStyles}>
         Home
       </NavLink>
       <NavLink to={"/addArticle"} className={navLinkStyles}>
         Add article
       </NavLink>
-      <NavLink to={"/filter"} className={navLinkStyles}>
-        Search
-      </NavLink>
+
       <NavLink to={"/repetition"} className={navLinkStyles}>
         Repetition
       </NavLink>
