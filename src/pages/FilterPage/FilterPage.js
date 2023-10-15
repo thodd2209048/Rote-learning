@@ -15,9 +15,7 @@ FilterPage.propTypes = {};
 
 function FilterPage(className) {
   const classes = clsx(className, styles.wrapper, "container");
-  const [filteredArticle, setFilteredArticle] = useState([]);
-  const [isDesc, setIsDesc] = useState(false);
-  const [filterInputs, setFilterInputs] = useState({
+  const emptyFilterInput = {
     title: "",
     subject: "",
     series: "",
@@ -25,7 +23,10 @@ function FilterPage(className) {
     type: "",
     status: "",
     repetition: "",
-  });
+  };
+  const [filteredArticle, setFilteredArticle] = useState([]);
+  const [isDesc, setIsDesc] = useState(false);
+  const [filterInputs, setFilterInputs] = useState(emptyFilterInput);
 
   const { typeOptions, statusOptions, repetitionOptions, articles } =
     useContext(ArticlesDataContext);
@@ -82,15 +83,7 @@ function FilterPage(className) {
   };
 
   const handleClear = () => {
-    setFilterInputs({
-      title: "",
-      subject: "",
-      series: "",
-      tags: [],
-      type: "",
-      status: "",
-      repetition: "",
-    });
+    setFilterInputs(emptyFilterInput);
     setFilteredArticle([]);
   };
 

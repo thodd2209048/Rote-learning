@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-
-import styles from "./EditArticlePage.module.scss";
-import clsx from "clsx";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import queryString from "query-string";
+import clsx from "clsx";
+
+import { useLocation } from "react-router-dom";
 import Article from "~/components/ArticleShow/ArticleWithButton/ArticleWithButton";
-import ArticleInput from "~/components/InputComponent/ArticleInput/ArticleInput";
 import Button from "~/components/Button/Button";
-import TextInput from "~/components/InputComponent/TextInput/TextInput";
+import ArticleInput from "~/components/InputComponent/ArticleInput/ArticleInput";
+import { readArticle, updateArticle } from "~/services/ApiServices";
+import styles from "./EditArticlePage.module.scss";
 import EditMetaDataArticle from "./EditMetaDataArticle/EditMetaDataArticle";
 
 EditArticlePage.propTypes = {
@@ -26,40 +25,23 @@ function EditArticlePage({ className }) {
   const articleId = queryString.parse(location.search).id;
 
   const updateArticleInfo = async () => {
-    try {
-      const res = await axios.put(
-        `http://localhost:8080/api/article/${articleId}`,
-        currentArticle
-      );
-      if (res.status === 200) {
-        setMessage("Update succeed");
-        getArticle();
-      } else {
-        setMessage("Update failed");
-      }
-    } catch (error) {
-      console.log(error);
+    const succeed = await updateArticle(articleId, currentArticle);
+    if (succeed) {
+      setMessage("Update succeed");
+      getArticle();
+    } else {
+      setMessage("Update failed");
     }
   };
 
   const getArticle = async () => {
-    try {
-      const res = await axios.get(
-        `http://localhost:8080/api/article/${articleId}`
-      );
-      if (res.status === 200) {
-        setCurrentArticle(res.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    const articleData = await readArticle(articleId);
+    setCurrentArticle(articleData);
   };
 
   useEffect(() => {
     getArticle();
   }, [articleId]);
-
-  console.log(currentArticle);
 
   return (
     <div className={classes}>

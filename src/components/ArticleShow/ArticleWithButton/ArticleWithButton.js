@@ -5,14 +5,13 @@ import RadioInput from "~/components/InputComponent/RadioInput/RadioInput";
 import Tag from "~/components/TagComponents/Tag/Tag";
 import ArticleUpdateBtns from "./ArticleUpdateBtns/ArticleUpdateBtns";
 import styles from "./ArticleWithButton.module.scss";
+import { repetitionOptions } from "~/utils/constants";
 
-Article.propTypes = {};
+ArticleWithButton.propTypes = {};
 
-function Article({ className, article, updateBtns }) {
+function ArticleWithButton({ className, article, updateBtns }) {
   const classes = clsx(className, styles.wrapper);
   const [repetition, setRepetition] = useState(article.repetition);
-
-  const repetitionOptions = ["first reading", "1", "2", "3", "4", "completed"];
 
   useEffect(() => {
     setRepetition(article.repetition);
@@ -68,4 +67,4 @@ function Article({ className, article, updateBtns }) {
   );
 }
 
-export default Article;
+export default ArticleWithButton;
