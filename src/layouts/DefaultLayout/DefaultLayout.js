@@ -15,27 +15,86 @@ DefaultLayout.propTypes = {};
 
 function DefaultLayout({ children }) {
   const navigate = useNavigate();
+  const navLinkStyles = ({ isActive }) => {
+    return isActive ? clsx(styles.active) : "";
+  };
   return (
     <div className={clsx(styles.wrapper)}>
-      <div className={clsx(styles.topBar, "container-fluid")}>
-        <Link to={"/"} className={clsx(styles.logo)}>
-          ROTE LEARNING
-        </Link>
-        <Button
-          className={clsx(styles.topBarBtn)}
-          callToAction
-          leftIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}
-          onClick={() => navigate(`/filter`)}
-        >
-          Search
-        </Button>
-      </div>
-      <div className={clsx(styles.content, ["container-fluid"])}>
-        <div className={clsx(styles.menu)}>
-          <Menu />
+      <header className={clsx("container")}>
+        <div className={clsx(styles.topBar, "row")}>
+          <div className="col">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <Link to={"/"} className={clsx(styles.logo, "navbar-brand")}>
+                ROTE LEARNING
+              </Link>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div
+                class="collapse navbar-collapse justify-content-between"
+                id="navbarSupportedContent"
+              >
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <NavLink
+                      to={"/"}
+                      className={clsx(navLinkStyles, "nav-link")}
+                    >
+                      Home
+                    </NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink
+                      to={"/addArticle"}
+                      className={clsx(navLinkStyles, "nav-link")}
+                    >
+                      Add article
+                    </NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink
+                      to={"/repetition"}
+                      className={clsx(navLinkStyles, "nav-link")}
+                    >
+                      Repetition
+                    </NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink
+                      to={"/random"}
+                      className={clsx(navLinkStyles, "nav-link")}
+                    >
+                      Random
+                    </NavLink>
+                  </li>
+                </ul>
+                <Button
+                  className={clsx(styles.topBarBtn)}
+                  callToAction
+                  leftIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}
+                  onClick={() => navigate(`/filter`)}
+                >
+                  Search
+                </Button>
+              </div>
+            </nav>
+          </div>
         </div>
-        <div className={clsx(styles.mainContent)}>{children}</div>
-      </div>
+      </header>
+      <main className={clsx(styles.content, ["container"])}>
+        <div className="row mt-3">
+          <div className="col">{children}</div>
+        </div>
+      </main>
     </div>
   );
 }
