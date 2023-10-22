@@ -1,33 +1,7 @@
 .wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   min-width: 50px;
   padding: 0px 4px;
-  border-radius: 5px;
-  font-size: 1.6rem;
-  font-weight: 600;
-  border: 1px solid black;
   gap: 2px;
-
-  a:hover {
-    color: currentColor;
-  }
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-}
-
-.callToAction {
-  color: var(--primary);
-  border: 1px solid var(--primary);
-  background-color: var(--background-color);
-
-  &:hover {
-    background-color: var(--hover-color);
-  }
 }
 
 .icon {

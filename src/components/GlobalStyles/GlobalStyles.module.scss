@@ -1,31 +1,31 @@
-:root {
-  --primary: rgb(16, 208, 205);
-  --hover-color: rgb(16, 208, 205, 0.1);
-  --text-color: #282829;
-  --background-color: white;
-}
+// :root {
+//   --primary: rgb(16, 208, 205);
+//   --hover-color: rgb(16, 208, 205, 0.1);
+//   --text-color: #282829;
+//   --background-color: white;
+// }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
-html {
-  font-size: 62.5%;
-}
+// html {
+//   font-size: 62.5%;
+// }
 
-body {
-  font-size: 1.6rem;
-  color: var(--text-color);
-  background-color: #f1f2f2;
-}
+// body {
+//   font-size: 1.6rem;
+//   color: var(--text-color);
+//   background-color: #f1f2f2;
+// }
 
-a {
-  text-decoration: none;
-  color: var(--text-color);
+// a {
+//   text-decoration: none;
+//   color: var(--text-color);
 
-  &:hover {
-    color: rgba(139, 219, 218);
-  }
-}
+//   &:hover {
+//     color: rgba(139, 219, 218);
+//   }
+// }
