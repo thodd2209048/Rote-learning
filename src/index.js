@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
+import "./sass/main.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

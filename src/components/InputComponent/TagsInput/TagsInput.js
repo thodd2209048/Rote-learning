@@ -15,7 +15,6 @@ TagsInput.propTypes = {
 };
 
 function TagsInput({ className, tags: articleTags, onChangeValue }) {
-  const classes = clsx(className, styles.wrapper);
   const { tags: allTags } = useContext(ArticlesDataContext);
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -45,12 +44,14 @@ function TagsInput({ className, tags: articleTags, onChangeValue }) {
   }, [allTags]);
 
   return (
-    <div className={classes}>
-      <label className={clsx(styles.label)}>
+    <div className={clsx(className, styles.wrapper, "row d-flex flex-row")}>
+      <label className={clsx(styles.label, "col-2 text-start")}>
         <span>Tags:</span>{" "}
       </label>
-      <div className={clsx(styles.input)}>
-        <ul className={clsx(styles.tags)}>
+      <div className={clsx(styles.input, " col-10")}>
+        <ul
+          className={clsx(styles.tags, "d-flex flex-wrap list-unstyled gap-1")}
+        >
           {articleTags.map((tag, index) => (
             <li className={clsx(styles.tag)} key={index}>
               <Tag tagName={tag}>
@@ -63,6 +64,7 @@ function TagsInput({ className, tags: articleTags, onChangeValue }) {
           ))}
         </ul>
         <input
+          className="w-100"
           placeholder="Enter to add tag"
           value={input}
           onKeyDown={addTag}

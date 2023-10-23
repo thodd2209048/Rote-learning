@@ -1,41 +1,27 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styles from "./DefaultLayout.module.scss";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import Menu from "./Menu/Menu";
 import Button from "~/components/Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMagnifyingGlass,
-  faMartiniGlass,
-} from "@fortawesome/free-solid-svg-icons";
+import styles from "./DefaultLayout.module.scss";
+import NavBar from "./NavBar/NavBar";
 
 DefaultLayout.propTypes = {};
 
 function DefaultLayout({ children }) {
-  const navigate = useNavigate();
+  const navLinkStyles = ({ isActive }) => {
+    return isActive ? clsx(styles.active) : "";
+  };
   return (
     <div className={clsx(styles.wrapper)}>
-      <div className={clsx(styles.topBar, "container-fluid")}>
-        <Link to={"/"} className={clsx(styles.logo)}>
-          ROTE LEARNING
-        </Link>
-        <Button
-          className={clsx(styles.topBarBtn)}
-          callToAction
-          leftIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}
-          onClick={() => navigate(`/filter`)}
-        >
-          Search
-        </Button>
-      </div>
-      <div className={clsx(styles.content, ["container-fluid"])}>
-        <div className={clsx(styles.menu)}>
-          <Menu />
+      <header className={clsx("container ")}>
+        <NavBar />
+      </header>
+      <main className={clsx(styles.content, ["container"])}>
+        <div className="row mt-3">
+          <div className="col">{children}</div>
         </div>
-        <div className={clsx(styles.mainContent)}>{children}</div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -11,11 +11,12 @@ Tag.propTypes = {
 };
 
 function Tag({ className, tagName, children, handleClick }) {
-  const classes = clsx(className, styles.wrapper);
-
   return (
-    <div className={classes}>
-      <div className={clsx(styles.tag)} onClick={handleClick}>
+    <div className={clsx(className, styles.wrapper)}>
+      <div
+        className={clsx(styles.tag, "badge bg-secondary me-1")}
+        onClick={handleClick}
+      >
         {tagName} {children}
       </div>
     </div>

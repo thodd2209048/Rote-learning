@@ -1,42 +1,6 @@
 .wrapper {
 }
 
-.topBar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--primary);
-}
-.logo {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--primary);
-
-  &:hover {
-    color: var(--primary);
-  }
-}
-.topBarBtn {
-  max-height: 2.6rem;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  margin: 1rem 0 3rem;
-}
-
 .menu {
   width: 10%;
-}
-
-.mainContent {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 5px;
-  align-items: center;
-  // justify-content: center;
-  border-left: 1px solid var(--primary);
 }

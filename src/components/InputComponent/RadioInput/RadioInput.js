@@ -13,11 +13,16 @@ RadioInput.propTypes = {
 };
 
 function RadioInput({ className, value, onChangeValue, label, options, id }) {
-  const classes = clsx(className, styles.wrapper);
   return (
-    <div className={classes}>
-      {label && <label>{label} </label>}
-      <div className={clsx(styles.input)}>
+    <div
+      className={clsx(
+        className,
+        styles.wrapper,
+        "row d-flex flex-row justify-content-between"
+      )}
+    >
+      {label && <label className="col-2 text-start">{label} </label>}
+      <div className={clsx(styles.input, "col-10 d-flex gap-1")}>
         {options.map((option, idx) => (
           <RadioOption
             key={idx}

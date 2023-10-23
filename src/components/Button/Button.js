@@ -24,15 +24,15 @@ function Button({
   ...passProps
 }) {
   const classes = clsx(
+    callToAction ? "btn-outline-primary" : "btn-outline-secondary",
+    "btn btn-sm p-1 text-nowrap",
     className,
-    styles.wrapper,
-    callToAction && styles.callToAction
+    styles.wrapper
   );
 
   let Comp = "button";
   const props = {
     onClick,
-
     ...passProps,
   };
   if (to) {
@@ -44,9 +44,9 @@ function Button({
   }
   return (
     <Comp className={classes} {...props}>
-      {leftIcon && <span className={clsx(styles.icon)}>{leftIcon}</span>}
+      {leftIcon && <span className={clsx("me-1")}>{leftIcon}</span>}
       <span>{children}</span>
-      {rightIcon && <span className={clsx(styles.icon)}>{rightIcon}</span>}
+      {rightIcon && <span className={clsx("ms-1")}>{rightIcon}</span>}
     </Comp>
   );
 }

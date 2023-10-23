@@ -20,13 +20,14 @@ function TextInput({
   placeholder = "",
   id,
 }) {
-  const classes = clsx(className, styles.wrapper);
-
   return (
-    <div className={classes}>
-      <label htmlFor={id}>{label}</label>
-      <div className={clsx(styles.input)}>
+    <div className={clsx(className, "row d-flex")}>
+      <label htmlFor={id} className="col-2 text-start">
+        {label}
+      </label>
+      <div className="col-10">
         <input
+          className="w-100"
           type="text"
           id={id}
           placeholder={placeholder}
