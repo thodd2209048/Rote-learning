@@ -24,27 +24,33 @@ function ListMultiPages({ list, articlePerPage }) {
     <div className={clsx(styles.wrapper, ["container-fluid"])}>
       <ArticleShow articlesList={currentList} />
       {!!maxPage && (
-        <div className={clsx(styles.buttons)}>
-          <button
-            className={clsx(styles.button)}
-            onClick={() =>
-              setCurrentPage((prev) => (prev === 1 ? 1 : prev - 1))
-            }
-          >
-            Prev
-          </button>
-          <span>
-            Page: {currentPage} / {maxPage}
-          </span>
-          <button
-            className={clsx(styles.button)}
-            onClick={() =>
-              setCurrentPage((prev) => (prev === maxPage ? prev : prev + 1))
-            }
-          >
-            Next
-          </button>
-        </div>
+        <ul className="pagination mt-3 justify-content-center">
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={() =>
+                setCurrentPage((prev) => (prev === 1 ? 1 : prev - 1))
+              }
+            >
+              Prev
+            </button>
+          </li>
+          <li className="page-item">
+            <span className="page-link">
+              Page: {currentPage} / {maxPage}
+            </span>
+          </li>
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={() =>
+                setCurrentPage((prev) => (prev === maxPage ? prev : prev + 1))
+              }
+            >
+              Next
+            </button>
+          </li>
+        </ul>
       )}
     </div>
   );

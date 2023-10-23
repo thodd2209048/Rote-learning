@@ -4,12 +4,12 @@ import queryString from "query-string";
 import clsx from "clsx";
 
 import { useLocation } from "react-router-dom";
-import Article from "~/components/ArticleShow/ArticleWithButton/ArticleWithButton";
 import Button from "~/components/Button/Button";
 import ArticleInput from "~/components/InputComponent/ArticleInput/ArticleInput";
 import { readArticle, updateArticle } from "~/services/ApiServices";
 import styles from "./EditArticlePage.module.scss";
 import EditMetaDataArticle from "./EditMetaDataArticle/EditMetaDataArticle";
+import Article from "~/components/Article/Article";
 
 EditArticlePage.propTypes = {
   className: PropTypes.string,

@@ -4,18 +4,19 @@ import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import styles from "./ArticleUpdateBtns.module.scss";
+import styles from "./UpdateBtns.module.scss";
 import { ArticlesDataContext } from "~/App";
 import Button from "~/components/Button/Button";
 import { updateArticleRepetition } from "~/services/ApiServices";
+import { images } from "~/assets/Images/images";
 
-ArticleUpdateBtns.propTypes = {
+UpdateBtns.propTypes = {
   className: PropTypes.string,
   repetition: PropTypes.string,
   article: PropTypes.object.isRequired,
 };
 
-function ArticleUpdateBtns({ className, repetition, article }) {
+function UpdateBtns({ className, repetition, article }) {
   const classes = clsx(className, styles.wrapper);
   const [isUpdated, setIsUpdated] = useState(false);
 
@@ -35,8 +36,12 @@ function ArticleUpdateBtns({ className, repetition, article }) {
     }
   };
   return (
-    <div className={classes}>
-      {isUpdated && <span>Updated</span>}
+    <div className="d-flex flex-row gap-1">
+      {isUpdated && (
+        <span>
+          <img src={images.updated} alt="" />
+        </span>
+      )}
       <Button
         className={clsx(styles.btn)}
         callToAction={true}
@@ -54,4 +59,4 @@ function ArticleUpdateBtns({ className, repetition, article }) {
   );
 }
 
-export default ArticleUpdateBtns;
+export default UpdateBtns;

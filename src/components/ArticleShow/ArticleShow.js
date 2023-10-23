@@ -3,7 +3,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 
 import styles from "./ArticleShow.module.scss";
-import ArticleWithButton from "./ArticleWithButton/ArticleWithButton";
+import Article from "../Article/Article";
 
 ArticleShow.propTypes = {
   articlesList: PropTypes.array.isRequired,
@@ -11,10 +11,10 @@ ArticleShow.propTypes = {
 
 function ArticleShow({ articlesList }) {
   return (
-    <div className={clsx(styles.wrapper)}>
+    <div className="d-flex flex-column text-start mt-2 gap-4">
       {articlesList.map((article, idx) => {
         return (
-          <ArticleWithButton updateBtns key={idx} article={article} />
+          <Article updateBtns key={idx} article={article} />
           // eslint-disable-next-line react/jsx-no-target-blank
           // <div className={clsx(styles.article)}>
           //   <a

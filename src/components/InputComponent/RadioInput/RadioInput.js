@@ -17,7 +17,7 @@ function RadioInput({ className, value, onChangeValue, label, options, id }) {
   return (
     <div className={classes}>
       {label && <label>{label} </label>}
-      <div className={clsx(styles.input)}>
+      <div className={clsx(styles.input, "d-flex gap-1")}>
         {options.map((option, idx) => (
           <RadioOption
             key={idx}

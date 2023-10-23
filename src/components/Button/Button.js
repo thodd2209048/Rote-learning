@@ -24,10 +24,10 @@ function Button({
   ...passProps
 }) {
   const classes = clsx(
-    "btn",
+    callToAction ? "btn-outline-primary" : "btn-outline-secondary",
+    "btn btn-sm p-1 text-nowrap",
     className,
-    styles.wrapper,
-    callToAction && "btn-primary"
+    styles.wrapper
   );
 
   let Comp = "button";

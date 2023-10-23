@@ -19,18 +19,22 @@ function RadioOption({
   const classes = clsx(className, styles.wrapper);
 
   const optionStyle =
-    checkedValue === option ? styles.checked : styles.unchecked;
+    checkedValue === option ? "btn-outline-primary" : "btn-outline-secondary";
 
   return (
     <div className={classes}>
-      <div
-        className={clsx(styles.option, optionStyle)}
+      <btn
+        className={clsx(
+          styles.option,
+          optionStyle,
+          "btn btn-sm rounded-pill p-1 text-nowrap"
+        )}
         onClick={() => {
           onChangeValue(option);
         }}
       >
         {option}
-      </div>
+      </btn>
     </div>
   );
 }

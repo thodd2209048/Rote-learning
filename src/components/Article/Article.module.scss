@@ -1,0 +1,14 @@
+.static {
+  position: relative;
+  margin-right: 5px;
+  padding-right: 5px;
+  border-right: 1px solid black;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.icon {
+  height: 1rem;
+}
