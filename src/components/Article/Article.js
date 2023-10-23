@@ -53,15 +53,11 @@ function Article({ className, article, updateBtns }) {
         )}
       </div>
 
-      {/* <span>
+      <span className="d-flex flex-wrap list-unstyled gap-1">
         {article.tags.map((tag, idx) => (
-          <Tag
-            key={idx}
-            className={"badge bg-secondary me-1"}
-            tagName={tag}
-          ></Tag>
+          <Tag key={idx} className={""} tagName={tag}></Tag>
         ))}
-      </span> */}
+      </span>
 
       <div className="d-flex flex-row mt-1 justify-content-between">
         <RadioInput

@@ -152,7 +152,7 @@ function AddArticle(props) {
         )}
       </div>
 
-      <MultiAdd />
+      {/* <MultiAdd /> */}
     </div>
   );
 }
