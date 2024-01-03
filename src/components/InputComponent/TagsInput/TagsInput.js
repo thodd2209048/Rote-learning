@@ -42,7 +42,7 @@ function TagsInput({ className, tags: articleTags, onChangeValue }) {
   useEffect(() => {
     setSuggestions(Object.keys(allTags));
   }, [allTags]);
-
+  // ------------------------  OLD  ------------------------
   return (
     <div className={clsx(className, styles.wrapper, "row d-flex flex-row")}>
       <label className={clsx(styles.label, "col-2 text-start")}>

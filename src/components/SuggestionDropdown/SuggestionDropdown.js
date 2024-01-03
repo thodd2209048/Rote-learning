@@ -19,39 +19,33 @@ function SuggestionDropdown({
   return (
     <div className={classes}>
       {" "}
-      {suggestions
-        .filter((item) => {
-          return item.toLowerCase().includes(input.toLowerCase());
-        })
-        .slice(0, 5)
-        .map((item) => {
-          const lowerCaseInput = input.toLowerCase();
-          const lowerCaseTag = item.toLowerCase();
-          let startIndex = lowerCaseTag.indexOf(lowerCaseInput);
+      {suggestions?.slice(0, 5).map((item) => {
+        // let startIndex = lowerCaseTag.indexOf(lowerCaseInput);
 
-          return (
-            <div
-              className={clsx(styles.dropdownRow)}
-              key={item}
-              onClick={() => handleChoseItem(item)}
-            >
-              {item.split("").map((char, index) => {
-                if (
-                  index >= startIndex &&
-                  index < startIndex + lowerCaseInput.length
-                ) {
-                  return (
-                    <span key={index} className={clsx(styles.bold)}>
-                      {char}
-                    </span>
-                  );
-                } else {
-                  return <span key={index}>{char}</span>;
-                }
-              })}
-            </div>
-          );
-        })}
+        return (
+          <div
+            className={clsx(styles.dropdownRow)}
+            key={item}
+            onClick={() => handleChoseItem(item)}
+          >
+            {item.split("").map((char, index) => {
+              if (
+                true
+                // index >= startIndex &&
+                // index < startIndex + lowerCaseInput.length
+              ) {
+                return (
+                  <span key={index} className={clsx(styles.bold)}>
+                    {char}
+                  </span>
+                );
+              } else {
+                return <span key={index}>{char}</span>;
+              }
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 }

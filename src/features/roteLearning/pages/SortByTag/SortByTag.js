@@ -7,9 +7,10 @@ import { createContext } from "react";
 import { useLocation } from "react-router-dom";
 import { ListMultiPages } from "~/components/ListMultiPages";
 import { RandomArticles } from "~/components/RandomArticles";
-import { Categories } from "../../components/Categories";
+
 import styles from "./SortByTag.module.scss";
 import { ArticlesDataContext } from "~/App";
+import { Categories } from "~/components/Categories";
 
 SortByTag.propTypes = {
   selectedTag: PropTypes.string,

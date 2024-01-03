@@ -1,13 +1,14 @@
 //Public routes
 
 import { DefaultLayout } from "~/layouts/DefaultLayout";
-import { AddArticle } from "~/pages/AddArticle";
-import EditArticlePage from "~/pages/EditArticlePage/EditArticlePage";
-import { FilterPage } from "~/pages/FilterPage";
+import { AddArticle } from "~/features/roteLearning/pages/AddArticle";
+import { FilterPage } from "~/features/roteLearning/pages/FilterPage";
 import { HomePage } from "~/pages/HomePage";
-import RandomPage from "~/pages/RandomPage/RandomPage";
-import RepetitionPage from "~/pages/RepetitionPage/RepetitionPage";
-import { SortByTag } from "~/pages/SortByTag";
+import RandomPage from "~/features/roteLearning/pages/RandomPage/RandomPage";
+
+import EditArticlePage from "~/features/roteLearning/pages/EditArticlePage/EditArticlePage";
+import { SortByTag } from "~/features/roteLearning/pages/SortByTag";
+import RepetitionPage from "~/features/roteLearning/pages/RepetitionPage/RepetitionPage";
 
 const publicRoutes = [
   { path: "/", component: HomePage, layout: DefaultLayout },

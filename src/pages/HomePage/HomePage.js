@@ -6,8 +6,8 @@ import { useContext } from "react";
 import clsx from "clsx";
 
 import styles from "./HomePage.module.scss";
-import RepetitionPage from "../RepetitionPage/RepetitionPage";
 import { ListMultiPages } from "~/components/ListMultiPages";
+import RepetitionPage from "~/features/roteLearning/pages/RepetitionPage/RepetitionPage";
 
 HomePage.propTypes = {};
 

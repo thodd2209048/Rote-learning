@@ -10,12 +10,12 @@ Tag.propTypes = {
   handleClick: PropTypes.func,
 };
 
-function Tag({ className, tagName, children, handleClick }) {
+function Tag({ className, tagName, children, handleClickTag }) {
   return (
     <div className={clsx(className, styles.wrapper)}>
       <div
         className={clsx(styles.tag, "badge bg-secondary me-1")}
-        onClick={handleClick}
+        onClick={handleClickTag}
       >
         {tagName} {children}
       </div>
