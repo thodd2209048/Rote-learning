@@ -49,6 +49,9 @@ function RepetitionPage({ className }) {
           />
         </Row>
       </PageLayout>
+      {articles?.length === 0 && (
+        <p>have finished reading all of the spaced repetitions</p>
+      )}
     </div>
   );
 }

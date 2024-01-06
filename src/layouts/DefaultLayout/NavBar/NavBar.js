@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Button from "~/components/Button/Button";
+import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 NavBar.propTypes = {
   className: PropTypes.string,
@@ -22,67 +23,28 @@ function NavBar({ className }) {
     <div className={classes}>
       <div className={clsx(styles.topBar, "row")}>
         <div className="col">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light px-2">
+          <Navbar expand="sm" className="bg-body-tertiary">
             <Link to={"/"} className={clsx(styles.logo, "navbar-brand ")}>
-              <p className="m-0 text-primary fs-4">ROTE LEARNING</p>
+              <p className="m-0 text-primary fs-4">ROTE</p>
             </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div
-              className="collapse navbar-collapse justify-content-between"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav mr-auto ">
-                <li className="nav-item">
-                  <NavLink to={"/"} className={clsx(navLinkStyles, "nav-link")}>
-                    Home
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to={"/addArticle"}
-                    className={clsx(navLinkStyles, "nav-link")}
-                  >
-                    Add article
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to={"/repetition"}
-                    className={clsx(navLinkStyles, "nav-link")}
-                  >
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <NavDropdown title="Article" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/repetition">
                     Repetition
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to={"/random"}
-                    className={clsx(navLinkStyles, "nav-link")}
-                  >
-                    Random
-                  </NavLink>
-                </li>
-              </ul>
-              <Button
-                className={clsx(styles.topBarBtn)}
-                callToAction
-                leftIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}
-                onClick={() => navigate(`/filter`)}
-              >
-                Search
-              </Button>
-            </div>
-          </nav>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/addArticle">
+                    Add article
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/articles">
+                    List articles
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link href="/admin">Admin</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </div>
       </div>
     </div>

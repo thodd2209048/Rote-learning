@@ -2,7 +2,6 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import { ReactComponent as CloseSvg } from "~/assets/Images/close.svg";
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 
 import SuggestionDropdown from "../../SuggestionDropdown/SuggestionDropdown";
 import styles from "./TagsInput.module.scss";

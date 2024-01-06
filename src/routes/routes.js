@@ -6,6 +6,8 @@ import HomePage from "~/pages/HomePage/HomePage";
 import RepetitionArticle from "~/features/roteLearning/pages/RepetitionPage/RepetitionPage";
 import UpdateArticle from "~/features/roteLearning/pages/UpdateArticle/UpdateArticle";
 import ListArticles from "~/features/roteLearning/pages/ListArticles/ListArticles";
+import { quoteRoutes } from "~/features/roteLearning/features/quotes/routes/routes";
+import { adminRoutes } from "~/features/roteLearning/features/admin/routes/routes";
 
 const publicRoutes = [
   { path: "/", component: HomePage, layout: DefaultLayout },
@@ -25,6 +27,8 @@ const publicRoutes = [
     component: ListArticles,
     layout: DefaultLayout,
   },
+  ...quoteRoutes,
+  ...adminRoutes,
 ];
 
 //Private routes

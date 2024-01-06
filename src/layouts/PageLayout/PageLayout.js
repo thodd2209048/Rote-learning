@@ -10,9 +10,9 @@ PageLayout.propTypes = {
   children: PropTypes.node,
 };
 
-function PageLayout({ title, children }) {
+function PageLayout({ title, children, className }) {
   return (
-    <div className={clsx(styles.wrapper, "container mt-3")}>
+    <div className={clsx(styles.wrapper, className, "container mt-3")}>
       <h3>{title}</h3>
       {children}
     </div>
