@@ -2,22 +2,29 @@
 
 import { DefaultLayout } from "~/layouts/DefaultLayout";
 import { AddArticle } from "~/features/roteLearning/pages/AddArticle";
-import { FilterPage } from "~/features/roteLearning/pages/FilterPage";
-import { HomePage } from "~/pages/HomePage";
-import RandomPage from "~/features/roteLearning/pages/RandomPage/RandomPage";
-
-import EditArticlePage from "~/features/roteLearning/pages/EditArticlePage/EditArticlePage";
-import { SortByTag } from "~/features/roteLearning/pages/SortByTag";
-import RepetitionPage from "~/features/roteLearning/pages/RepetitionPage/RepetitionPage";
+import HomePage from "~/pages/HomePage/HomePage";
+import RepetitionArticle from "~/features/roteLearning/pages/RepetitionPage/RepetitionPage";
+import UpdateArticle from "~/features/roteLearning/pages/UpdateArticle/UpdateArticle";
+import ListArticles from "~/features/roteLearning/pages/ListArticles/ListArticles";
 
 const publicRoutes = [
   { path: "/", component: HomePage, layout: DefaultLayout },
-  { path: "/sortByTag", component: SortByTag, layout: DefaultLayout },
   { path: "/addArticle", component: AddArticle, layout: DefaultLayout },
-  { path: "/filter", component: FilterPage, layout: DefaultLayout },
-  { path: "/repetition", component: RepetitionPage, layout: DefaultLayout },
-  { path: "/random", component: RandomPage, layout: DefaultLayout },
-  { path: "/edit", component: EditArticlePage, layout: DefaultLayout },
+  {
+    path: "/repetition",
+    component: RepetitionArticle,
+    layout: DefaultLayout,
+  },
+  {
+    path: "/article-update/:id",
+    component: UpdateArticle,
+    layout: DefaultLayout,
+  },
+  {
+    path: "/articles",
+    component: ListArticles,
+    layout: DefaultLayout,
+  },
 ];
 
 //Private routes

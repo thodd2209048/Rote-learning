@@ -6,24 +6,24 @@ import styles from "./RadioOption.module.scss";
 
 RadioOption.propTypes = {};
 
-function RadioOption({ className, checkedValue, option }) {
+function RadioOption({ className, checkedValue, option, handleClick }) {
   const classes = clsx(className, styles.wrapper);
 
   const optionStyle =
-    checkedValue === option ? "btn-outline-primary" : "btn-outline-secondary";
+    checkedValue === option ? "btn-outline-primary" : "btn-outline-secondary ";
 
-  console.log(option);
   return (
     <div className={classes}>
-      <btn
+      <div
         className={clsx(
           styles.option,
           optionStyle,
           "btn btn-sm rounded-pill p-1 text-nowrap"
         )}
+        onClick={() => handleClick(option)}
       >
         {option}
-      </btn>
+      </div>
     </div>
   );
 }

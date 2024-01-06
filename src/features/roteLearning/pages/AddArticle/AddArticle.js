@@ -215,6 +215,9 @@ function AddArticle(props) {
               ))}
             </div>
             <p className={clsx(styles.notificationDetail)}>
+              Last time read: {mutation.data.data.lastTimeRead}
+            </p>
+            <p className={clsx(styles.notificationDetail)}>
               Repetition: {mutation.data.data.repetition}
             </p>
           </>

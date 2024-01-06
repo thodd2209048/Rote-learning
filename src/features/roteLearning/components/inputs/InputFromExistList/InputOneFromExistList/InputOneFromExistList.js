@@ -63,7 +63,7 @@ function InputOneFromExistList({
         <Form.Control
           className="w-100"
           placeholder="Enter to add"
-          value={selected?.name}
+          value={field.value}
           onKeyDown={enterToAddItem}
           onChange={(e) => setSelected(e.target.value.toLowerCase())}
         />

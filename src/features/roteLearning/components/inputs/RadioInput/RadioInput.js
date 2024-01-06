@@ -12,7 +12,7 @@ RadioInput.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-function RadioInput({ className, form, field, meta, label, options }) {
+function RadioInput({ className, value, onChangeValue, label, options, id }) {
   return (
     <div
       className={clsx(
@@ -21,14 +21,15 @@ function RadioInput({ className, form, field, meta, label, options }) {
         "row d-flex flex-row justify-content-between"
       )}
     >
-      {!!label && <label className="col-2 text-start">{label} </label>}
+      {label && <label className="col-2 text-start">{label} </label>}
       <div className={clsx(styles.input, "col-10 d-flex gap-1")}>
-        {options.map((option) => (
+        {options.map((option, idx) => (
           <RadioOption
-            key={option}
-            // value={value}
-            // onChangeValue={onChangeValue}
+            key={idx}
+            value={value}
+            onChangeValue={onChangeValue}
             option={option}
+            id={id}
             className={clsx(styles.inputContainer)}
           />
         ))}

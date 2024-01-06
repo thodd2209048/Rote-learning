@@ -71,7 +71,7 @@ function InputListFromExistList({
       )}
       <div className={clsx(styles.input, "col")}>
         <ShowSelected
-          selectedItems={selected}
+          selectedItems={field.value}
           handleDeselectItem={handleDeselect}
         />
         <Form.Control

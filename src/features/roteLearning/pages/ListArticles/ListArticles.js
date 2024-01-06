@@ -1,39 +1,36 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 import { useQuery } from "react-query";
 import { format } from "date-fns";
-import clsx from "clsx";
 
-import PageLayout from "~/layouts/PageLayout/PageLayout";
-
+import styles from "./ListArticles.module.scss";
 import { listArticles } from "../../api/api";
-import styles from "./RepetitionPage.module.scss";
+import PageLayout from "~/layouts/PageLayout/PageLayout";
 import { Col, Row } from "react-bootstrap";
-import RepetitionArticle from "./RepetitionArticle/RepetitionArticle";
+import RepetitionArticle from "../RepetitionPage/RepetitionArticle/RepetitionArticle";
 import Paginate from "~/components/ui/Paginate/Paginate";
 
-RepetitionPage.propTypes = {
+ListArticles.propTypes = {
   className: PropTypes.string,
 };
 
-function RepetitionPage({ className }) {
+function ListArticles({ className }) {
   const classes = clsx(styles.wrapper, className);
   const [page, setPage] = useState(0);
   const { data, isSuccess } = useQuery({
-    queryKey: ["repetitionArticle", page],
+    queryKey: ["articles", page],
     queryFn: () =>
       listArticles({
-        date: format(new Date(), "yyyy-MM-dd"),
         page: page,
         size: 10,
       }),
   });
 
   const articles = data?.data.content;
-
   return (
     <div className={classes}>
-      <PageLayout title="Repetition">
+      <PageLayout title="Articles">
         <Row className="justify-content-md-center">
           <Col xs={12} lg={6}>
             {isSuccess &&
@@ -53,4 +50,4 @@ function RepetitionPage({ className }) {
   );
 }
 
-export default RepetitionPage;
+export default ListArticles;
