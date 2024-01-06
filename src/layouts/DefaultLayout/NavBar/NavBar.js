@@ -22,12 +22,12 @@ function NavBar({ className }) {
     <div className={classes}>
       <div className={clsx(styles.topBar, "row")}>
         <div className="col">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light px-2">
             <Link to={"/"} className={clsx(styles.logo, "navbar-brand ")}>
               <p className="m-0 text-primary fs-4">ROTE LEARNING</p>
             </Link>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -35,20 +35,20 @@ function NavBar({ className }) {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
 
             <div
-              class="collapse navbar-collapse justify-content-between"
+              className="collapse navbar-collapse justify-content-between"
               id="navbarSupportedContent"
             >
-              <ul class="navbar-nav mr-auto ">
-                <li class="nav-item">
+              <ul className="navbar-nav mr-auto ">
+                <li className="nav-item">
                   <NavLink to={"/"} className={clsx(navLinkStyles, "nav-link")}>
                     Home
                   </NavLink>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <NavLink
                     to={"/addArticle"}
                     className={clsx(navLinkStyles, "nav-link")}
@@ -56,7 +56,7 @@ function NavBar({ className }) {
                     Add article
                   </NavLink>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <NavLink
                     to={"/repetition"}
                     className={clsx(navLinkStyles, "nav-link")}
@@ -64,7 +64,7 @@ function NavBar({ className }) {
                     Repetition
                   </NavLink>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <NavLink
                     to={"/random"}
                     className={clsx(navLinkStyles, "nav-link")}

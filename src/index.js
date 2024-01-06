@@ -7,14 +7,19 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
 import "./sass/main.css";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <GlobalStyles>
-        <App />
-      </GlobalStyles>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyles>
+          <App />
+        </GlobalStyles>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

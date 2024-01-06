@@ -17,11 +17,7 @@ function DefaultLayout({ children }) {
       <header className={clsx("container ")}>
         <NavBar />
       </header>
-      <main className={clsx(styles.content, ["container"])}>
-        <div className="row mt-3">
-          <div className="col">{children}</div>
-        </div>
-      </main>
+      <main className={clsx(styles.content)}>{children}</main>
     </div>
   );
 }

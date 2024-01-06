@@ -4,23 +4,15 @@ import clsx from "clsx";
 
 import styles from "./RadioOption.module.scss";
 
-RadioOption.propTypes = {
-  onChangeValue: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-};
+RadioOption.propTypes = {};
 
-function RadioOption({
-  className,
-  value: checkedValue,
-  onChangeValue,
-  option,
-  id,
-}) {
+function RadioOption({ className, checkedValue, option }) {
   const classes = clsx(className, styles.wrapper);
 
   const optionStyle =
     checkedValue === option ? "btn-outline-primary" : "btn-outline-secondary";
 
+  console.log(option);
   return (
     <div className={classes}>
       <btn
@@ -29,9 +21,6 @@ function RadioOption({
           optionStyle,
           "btn btn-sm rounded-pill p-1 text-nowrap"
         )}
-        onClick={() => {
-          onChangeValue(option);
-        }}
       >
         {option}
       </btn>

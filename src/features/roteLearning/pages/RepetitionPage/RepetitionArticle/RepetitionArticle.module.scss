@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: start;
+}
+
+.static {
+  position: relative;
+  margin-right: 5px;
+  padding-right: 5px;
+  border-right: 1px solid black;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.editArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
