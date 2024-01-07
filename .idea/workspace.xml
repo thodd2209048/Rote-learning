@@ -5,76 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13e93bd3-4874-4e9c-afc3-d4e89f25cb2d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/rote-learning-front-end.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/GeneralInput/GeneralInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/GeneralInput/GeneralInput.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/HintListDisplay/HintListDisplay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/HintListDisplay/HintListDisplay.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputListFromExistList/InputListFromExistList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputListFromExistList/InputListFromExistList.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/ShowSelected/ShowSelected.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/ShowSelected/ShowSelected.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/config/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/AddArticle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/AddArticle.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/TagList/TagList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/EditArticlePage/EditArticlePage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/EditArticlePage/EditArticlePage.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/EditArticlePage/EditMetaDataArticle/EditMetaDataArticle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/EditArticlePage/EditMetaDataArticle/EditMetaDataArticle.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/FilterPage/FilterPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/FilterPage/FilterPage.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/FilterPage/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/RandomPage/RandomPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/RandomPage/RandomPage.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/RepetitionPage/RepetitionPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/RepetitionPage/RepetitionPage.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/SortByTag/SortByTag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/SortByTag/SortByTag.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/SortByTag/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputComponent/TagsInput/TagsInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputComponent/TagsInput/TagsInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SuggestionDropdown/SuggestionDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SuggestionDropdown/SuggestionDropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TagComponents/Tag/Tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TagComponents/Tag/Tag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/DefaultLayout/DefaultLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/DefaultLayout/DefaultLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/AddArticle/AddArticle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/AddArticle/AddArticle.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/AddArticle/MultiAdd/MultiAdd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/AddArticle/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EditArticlePage/EditArticlePage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EditArticlePage/EditArticlePage.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EditArticlePage/EditMetaDataArticle/EditMetaDataArticle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/EditArticlePage/EditMetaDataArticle/EditMetaDataArticle.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FilterPage/FilterPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FilterPage/FilterPage.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FilterPage/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RandomPage/RandomPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RandomPage/RandomPage.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RepetitionPage/RepetitionPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RepetitionPage/RepetitionPage.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SortByTag/SortByTag.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SortByTag/SortByTag.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SortByTag/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/roteLearning/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/roteLearning/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/AddArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/AddArticle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
   <component name="ProjectId" id="2aP7KbFW1NBZKt7bV29L5Ya4fLM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -85,11 +34,25 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "re-struct",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "git-widget-placeholder": "master",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="13e93bd3-4874-4e9c-afc3-d4e89f25cb2d" name="Changes" comment="" />
+      <created>1704625569391</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704625569391</updated>
+      <workItem from="1704625571318" duration="43000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

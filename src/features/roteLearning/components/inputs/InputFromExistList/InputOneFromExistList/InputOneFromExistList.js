@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useQuery } from "react-query";
 import clsx from "clsx";
@@ -29,16 +29,16 @@ function InputOneFromExistList({
   });
 
   const [suggestions, setSuggestions] = useState([]);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState("");
 
   const handleSelect = (item) => {
-    setSelected(item);
+    setSelected(item.name);
     setSuggestions((prev) => prev.filter((t) => t !== item));
   };
 
   const enterToAddItem = (e) => {
     if (e.key === "Enter") {
-      setSelected({ name: e.target.value, count: 0 });
+      setSelected(e.target.value);
     }
   };
 
@@ -47,7 +47,8 @@ function InputOneFromExistList({
   }, [data, selected]);
 
   useEffect(() => {
-    form.setFieldValue(field.name, selected);
+    const passValue = selected === "" ? null : selected;
+    form.setFieldValue(field.name, passValue);
   }, [selected]);
 
   return (
@@ -63,7 +64,7 @@ function InputOneFromExistList({
         <Form.Control
           className="w-100"
           placeholder="Enter to add"
-          value={field.value}
+          value={selected}
           onKeyDown={enterToAddItem}
           onChange={(e) => setSelected(e.target.value.toLowerCase())}
         />
@@ -79,4 +80,4 @@ function InputOneFromExistList({
   );
 }
 
-export default InputOneFromExistList;
+export default memo(InputOneFromExistList);

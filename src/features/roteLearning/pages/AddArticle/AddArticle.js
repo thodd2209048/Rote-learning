@@ -25,12 +25,13 @@ AddArticle.propTypes = {};
 function AddArticle(props) {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: (value) => createArticle(value),
+    mutationFn: (values) => createArticle(values),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["articles"] });
     },
   });
 
+  console.log("mutation", mutation);
   return (
     <div className={clsx(styles.wrapper, "container")}>
       <Row>
@@ -192,33 +193,33 @@ function AddArticle(props) {
         {mutation.isSuccess && (
           <>
             <p className={clsx(styles.notificationDetail)}>
-              URL: {mutation.data.data.url}
+              URL: {mutation.data?.data.url}
             </p>
             <p className={clsx(styles.notificationDetail)}>
-              Title: {mutation.data.data.title}
+              Title: {mutation.data?.data.title}
             </p>
             <p className={clsx(styles.notificationDetail)}>
-              Status: {mutation.data.data.status}
+              Status: {mutation.data?.data.status}
             </p>
             <p className={clsx(styles.notificationDetail)}>
-              Subject: {mutation.data.data.subject}
+              Subject: {mutation.data?.data.subject}
             </p>
             <p className={clsx(styles.notificationDetail)}>
-              Series: {mutation.data.data.series}
+              Series: {mutation.data?.data.series}
             </p>
             <div className={clsx(styles.tags)}>
               <span>Tags: </span>
-              {mutation.data.data.tags.map((tag, index) => (
+              {mutation.data?.data.tags.map((tag, index) => (
                 <span className={clsx(styles.tag)} key={index}>
                   {tag}
                 </span>
               ))}
             </div>
             <p className={clsx(styles.notificationDetail)}>
-              Last time read: {mutation.data.data.lastTimeRead}
+              Last time read: {mutation.data?.data.lastTimeRead}
             </p>
             <p className={clsx(styles.notificationDetail)}>
-              Repetition: {mutation.data.data.repetition}
+              Repetition: {mutation.data?.data.repetition}
             </p>
           </>
         )}

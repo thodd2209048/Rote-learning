@@ -2,8 +2,6 @@ import axios from "axios";
 
 const { baseUrl } = require("~/api/api");
 
-const apiUrl = `${baseUrl}/api/article`;
-
 const listArticles = async (term) => {
   const res = await axios.get(`${baseUrl}/api/articles`, { params: term });
   return res;
