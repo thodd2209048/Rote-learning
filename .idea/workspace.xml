@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13e93bd3-4874-4e9c-afc3-d4e89f25cb2d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/features/roteLearning/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/roteLearning/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/AddArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/roteLearning/pages/AddArticle/AddArticle.js" afterDir="false" />
-    </list>
+    <list default="true" id="13e93bd3-4874-4e9c-afc3-d4e89f25cb2d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,10 +16,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2aP7KbFW1NBZKt7bV29L5Ya4fLM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,6 +31,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Work/Project/easy-express/easy-express-github-fe",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -49,6 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704625569391</updated>
       <workItem from="1704625571318" duration="43000" />
+      <workItem from="1704981674630" duration="594000" />
     </task>
     <servers />
   </component>

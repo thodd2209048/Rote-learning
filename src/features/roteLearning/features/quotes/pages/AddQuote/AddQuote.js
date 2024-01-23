@@ -12,7 +12,9 @@ import { schemas } from "../../config/schemas";
 import GeneralInput from "~/components/GeneralInput/GeneralInput";
 import NotificationApi from "~/components/ui/NotificationApi/NotificationApi";
 
-AddQuote.propTypes = {};
+AddQuote.propTypes = {
+  className: PropTypes.string,
+};
 
 function AddQuote({ className }) {
   const queryClient = useQueryClient();
@@ -38,14 +40,15 @@ function AddQuote({ className }) {
         }}
       >
         {({ resetForm }) => (
-          <Form className="row">
-            <div className="col">
+          <Form className="row d-flex justify-content-center">
+            <div className="col-12 col-md-6">
               <Field name="content">
                 {({ field, form, meta }) => (
                   <>
                     <GeneralInput
                       label="Content"
-                      type="text"
+                      as="textarea"
+                      rows={"5"}
                       field={field}
                       form={form}
                       meta={meta}
