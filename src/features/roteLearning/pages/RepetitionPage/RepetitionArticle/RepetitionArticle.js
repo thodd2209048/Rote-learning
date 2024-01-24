@@ -1,19 +1,20 @@
-import React, { memo } from "react";
-import PropTypes from "prop-types";
-import { useMutation, useQueryClient } from "react-query";
 import { Field, Form, Formik } from "formik";
+import { memo } from "react";
+import { useMutation, useQueryClient } from "react-query";
 
-import { updateArticle } from "~/features/roteLearning/api/api";
 import clsx from "clsx";
-import styles from "./RepetitionArticle.module.scss";
+import { updateLastTimeReadOfArticle } from "~/features/roteLearning/api/api";
 import { articleRepetitions } from "~/features/roteLearning/config/constants";
 import { schemas } from "~/features/roteLearning/config/schemas";
+import styles from "./RepetitionArticle.module.scss";
 
+import { faHourglass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import Button from "~/components/Button/Button";
 import Tag from "~/components/TagComponents/Tag/Tag";
 import RadioOption from "~/features/roteLearning/components/inputs/RadioInput/RadioOption/RadioOption";
-import Button from "~/components/Button/Button";
-import { useNavigate } from "react-router-dom";
-import { Col } from "react-bootstrap";
 
 RepetitionArticle.propTypes = {};
 
@@ -21,7 +22,7 @@ function RepetitionArticle({ className, article }) {
   const classes = clsx(styles.wrapper, className);
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: (value) => updateArticle(article.id, value),
+    mutationFn: (value) => updateLastTimeReadOfArticle(article.id, value),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["article", article.id],
@@ -52,17 +53,14 @@ function RepetitionArticle({ className, article }) {
           </span>
 
           <span className={clsx(styles.static)}>
-            last time read: {article.lastTimeRead}
+            last time read:{" "}
+            {`${article.lastTimeRead[0]}/${article.lastTimeRead[1]}/${article.lastTimeRead[2]}`}
           </span>
-          {!!article.repetition && (
-            <span className={clsx(styles.static)}>
-              repetition: {article.repetition}
-            </span>
-          )}
 
           {!!article.nextTimeRead && (
             <span className={clsx(styles.static)}>
-              next time read: {article.nextTimeRead}
+              next time read:{" "}
+              {`${article.nextTimeRead[0]}/${article.nextTimeRead[1]}/${article.nextTimeRead[2]}`}
             </span>
           )}
         </div>
@@ -92,14 +90,21 @@ function RepetitionArticle({ className, article }) {
                       <div className={clsx(styles.input, " d-flex gap-1")}>
                         {articleRepetitions.map((option) => (
                           <RadioOption
-                            key={option}
+                            key={option.value}
                             className={clsx(styles.inputContainer)}
                             handleClick={() => {
-                              form.setFieldValue(field.name, option);
+                              form.setFieldValue(field.name, option.value);
                             }}
                             checkedValue={field.value}
-                            option={option}
-                          />
+                            value={option.value}
+                          >
+                            <div className="px-2">
+                              {option.nextPeriod !== "completed" && (
+                                <FontAwesomeIcon icon={faHourglass} />
+                              )}{" "}
+                              {option.nextPeriod}
+                            </div>
+                          </RadioOption>
                         ))}
                       </div>
                     );
@@ -108,7 +113,7 @@ function RepetitionArticle({ className, article }) {
                 <div className="btnContainer">
                   {mutation.isSuccess && <span>Updated</span>}
                   <Button type="submit" callToAction className={"ms-1"}>
-                    Update
+                    Repeated
                   </Button>
                   <Button
                     className={"ms-1"}

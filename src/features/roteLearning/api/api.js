@@ -22,6 +22,14 @@ const updateArticle = async (id, articleData) => {
   return res;
 };
 
+const updateLastTimeReadOfArticle = async (id, data) => {
+  const res = await axios.put(
+    `${baseUrl}/api/articles/updateLastTimeRead/${id}`,
+    data
+  );
+  return res;
+};
+
 const listTag = async () => {
   const res = await axios.get(`${baseUrl}/api/tags`);
   return res;
@@ -42,6 +50,7 @@ export {
   getArticle,
   createArticle,
   updateArticle,
+  updateLastTimeReadOfArticle,
   listTag,
   listSubject,
   listSeries,

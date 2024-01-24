@@ -4,13 +4,27 @@ import clsx from "clsx";
 
 import styles from "./RadioOption.module.scss";
 
-RadioOption.propTypes = {};
+RadioOption.propTypes = {
+  className: PropTypes.string,
+  checkedValue: PropTypes.string,
+  option: PropTypes.object,
+  handleClick: PropTypes.func,
+  children: PropTypes.node,
+  value: PropTypes.string,
+};
 
-function RadioOption({ className, checkedValue, option, handleClick }) {
+function RadioOption({
+  className,
+  checkedValue,
+  option,
+  handleClick,
+  children,
+  value,
+}) {
   const classes = clsx(className, styles.wrapper);
 
   const optionStyle =
-    checkedValue === option ? "btn-outline-primary" : "btn-outline-secondary ";
+    checkedValue === value ? "btn-outline-primary" : "btn-outline-secondary ";
 
   return (
     <div className={classes}>
@@ -20,9 +34,9 @@ function RadioOption({ className, checkedValue, option, handleClick }) {
           optionStyle,
           "btn btn-sm rounded-pill p-1 text-nowrap"
         )}
-        onClick={() => handleClick(option)}
+        onClick={() => handleClick()}
       >
-        {option}
+        {children}
       </div>
     </div>
   );
