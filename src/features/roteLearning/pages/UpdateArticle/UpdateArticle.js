@@ -176,6 +176,8 @@ function UpdateArticle({ className }) {
                               label="Select a step"
                               leftLabel="Repetition"
                               options={articleRepetitions}
+                              fieldNameAsValue="value"
+                              fieldNameAsTitle="nextPeriod"
                               form={form}
                               field={field}
                               meta={meta}

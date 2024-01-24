@@ -32,7 +32,7 @@ function ListArticles({ className }) {
     <div className={classes}>
       <PageLayout title="Articles">
         <Row className="justify-content-md-center">
-          <Col xs={12} lg={6}>
+          <Col xs={12} lg={8}>
             {isSuccess &&
               articles.map((article) => (
                 <RepetitionArticle article={article} key={article.id} />

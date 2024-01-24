@@ -82,7 +82,12 @@ function RepetitionArticle({ className, article }) {
             }}
           >
             {({ resetForm, values }) => (
-              <Form className={clsx(styles.editArea)}>
+              <Form
+                className={clsx(
+                  styles.editArea,
+                  "flex-column flex-sm-row gap-2"
+                )}
+              >
                 {" "}
                 <Field name="repetition">
                   {({ field, form, meta }) => {
@@ -113,7 +118,7 @@ function RepetitionArticle({ className, article }) {
                 <div className="btnContainer">
                   {mutation.isSuccess && <span>Updated</span>}
                   <Button type="submit" callToAction className={"ms-1"}>
-                    Repeated
+                    Update process
                   </Button>
                   <Button
                     className={"ms-1"}

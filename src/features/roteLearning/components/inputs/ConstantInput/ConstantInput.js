@@ -8,6 +8,8 @@ function ConstantInput({
   label,
   leftLabel,
   options,
+  fieldNameAsValue = 0,
+  fieldNameAsTitle = "value",
   field,
   form,
   meta,
@@ -27,9 +29,16 @@ function ConstantInput({
           {...props}
         >
           <option value={""}>{label}</option>
-          {options.map((option, idx) => (
-            <option key={idx} value={option}>
-              {option}
+          {options.map((option) => (
+            <option
+              key={
+                typeof option === "object" ? option[fieldNameAsValue] : option
+              }
+              value={
+                typeof option === "object" ? option[fieldNameAsValue] : option
+              }
+            >
+              {typeof option === "object" ? option[fieldNameAsTitle] : option}
             </option>
           ))}
         </Form.Select>
