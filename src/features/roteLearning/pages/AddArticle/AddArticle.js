@@ -57,136 +57,139 @@ function AddArticle(props) {
               mutation.mutate({ ...values });
             }}
           >
-            {({ resetForm }) => (
-              <Form className="row">
-                <div className="col">
-                  <Field name="url">
-                    {({ field, form, meta }) => (
-                      <>
-                        <GeneralInput
-                          label="Url"
-                          type="text"
-                          field={field}
-                          form={form}
-                          meta={meta}
-                        />
-                      </>
-                    )}
-                  </Field>
-                  <Field name="title">
-                    {({ field, form, meta }) => (
-                      <>
-                        <GeneralInput
-                          label="Title"
-                          type="text"
-                          field={field}
-                          form={form}
-                          meta={meta}
-                        />
-                      </>
-                    )}
-                  </Field>
-                  <Field name="subject">
-                    {({ field, form, meta }) => (
-                      <>
-                        <InputOneFromExistList
-                          form={form}
-                          field={field}
-                          label="Subject"
-                          queryFn={() => listSubject()}
-                        />
-                      </>
-                    )}
-                  </Field>
-                  <Field name="series">
-                    {({ field, form, meta }) => (
-                      <>
-                        <InputOneFromExistList
-                          form={form}
-                          field={field}
-                          label="Series"
-                          queryFn={() => listSeries()}
-                        />
-                      </>
-                    )}
-                  </Field>
-                  <Field name="tags">
-                    {({ field, form, meta }) => (
-                      <>
-                        <InputListFromExistList
-                          form={form}
-                          field={field}
-                          label="Tags"
-                          queryFn={() => listTag()}
-                        />
-                      </>
-                    )}
-                  </Field>
-                  <Field name="type">
-                    {({ field, form, meta }) => (
-                      <>
-                        <ConstantInput
-                          label="Select a type"
-                          leftLabel="Type"
-                          options={articleTypes}
-                          form={form}
-                          field={field}
-                          meta={meta}
-                        />
-                      </>
-                    )}
-                  </Field>
-                  <Field name="repetition">
-                    {({ field, form, meta }) => (
-                      <>
-                        <ConstantInput
-                          label="Select a step"
-                          leftLabel="Repetition"
-                          options={articleRepetitions}
-                          fieldNameAsValue="value"
-                          fieldNameAsTitle="nextPeriod"
-                          form={form}
-                          field={field}
-                          meta={meta}
-                        />
-                      </>
-                    )}
-                  </Field>
-                  <Field name="status">
-                    {({ field, form, meta }) => (
-                      <>
-                        <ConstantInput
-                          label="Select a status"
-                          leftLabel="Status"
-                          options={articleStatuses}
-                          form={form}
-                          field={field}
-                          meta={meta}
-                        />
-                      </>
-                    )}
-                  </Field>
-                </div>
-                <div className="row mt-3">
+            {({ resetForm, values }) => {
+              console.log("values", values);
+              return (
+                <Form className="row">
                   <div className="col">
-                    <button
-                      className="btn btn-primary me-3"
-                      type="submit"
-                      disabled={mutation.isPending}
-                    >
-                      Submit
-                    </button>
-                    <button
-                      className="btn btn-outline-secondary"
-                      type="reset"
-                      onClick={() => resetForm()}
-                    >
-                      Reset
-                    </button>
+                    <Field name="url">
+                      {({ field, form, meta }) => (
+                        <>
+                          <GeneralInput
+                            label="Url"
+                            type="text"
+                            field={field}
+                            form={form}
+                            meta={meta}
+                          />
+                        </>
+                      )}
+                    </Field>
+                    <Field name="title">
+                      {({ field, form, meta }) => (
+                        <>
+                          <GeneralInput
+                            label="Title"
+                            type="text"
+                            field={field}
+                            form={form}
+                            meta={meta}
+                          />
+                        </>
+                      )}
+                    </Field>
+                    <Field name="subject">
+                      {({ field, form, meta }) => (
+                        <>
+                          <InputOneFromExistList
+                            form={form}
+                            field={field}
+                            label="Subject"
+                            queryFn={() => listSubject()}
+                          />
+                        </>
+                      )}
+                    </Field>
+                    <Field name="series">
+                      {({ field, form, meta }) => (
+                        <>
+                          <InputOneFromExistList
+                            form={form}
+                            field={field}
+                            label="Series"
+                            queryFn={() => listSeries()}
+                          />
+                        </>
+                      )}
+                    </Field>
+                    <Field name="tags">
+                      {({ field, form, meta }) => (
+                        <>
+                          <InputListFromExistList
+                            form={form}
+                            field={field}
+                            label="Tags"
+                            queryFn={() => listTag()}
+                          />
+                        </>
+                      )}
+                    </Field>
+                    <Field name="type">
+                      {({ field, form, meta }) => (
+                        <>
+                          <ConstantInput
+                            label="Select a type"
+                            leftLabel="Type"
+                            options={articleTypes}
+                            form={form}
+                            field={field}
+                            meta={meta}
+                          />
+                        </>
+                      )}
+                    </Field>
+                    <Field name="repetition">
+                      {({ field, form, meta }) => (
+                        <>
+                          <ConstantInput
+                            label="Select a step"
+                            leftLabel="Repetition"
+                            options={articleRepetitions}
+                            fieldNameAsValue="value"
+                            fieldNameAsTitle="nextPeriod"
+                            form={form}
+                            field={field}
+                            meta={meta}
+                          />
+                        </>
+                      )}
+                    </Field>
+                    <Field name="status">
+                      {({ field, form, meta }) => (
+                        <>
+                          <ConstantInput
+                            label="Select a status"
+                            leftLabel="Status"
+                            options={articleStatuses}
+                            form={form}
+                            field={field}
+                            meta={meta}
+                          />
+                        </>
+                      )}
+                    </Field>
                   </div>
-                </div>
-              </Form>
-            )}
+                  <div className="row mt-3">
+                    <div className="col">
+                      <button
+                        className="btn btn-primary me-3"
+                        type="submit"
+                        disabled={mutation.isPending}
+                      >
+                        Submit
+                      </button>
+                      <button
+                        className="btn btn-outline-secondary"
+                        type="reset"
+                        onClick={() => resetForm()}
+                      >
+                        Reset
+                      </button>
+                    </div>
+                  </div>
+                </Form>
+              );
+            }}
           </Formik>
         </Col>
       </Row>

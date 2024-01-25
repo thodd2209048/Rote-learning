@@ -3,7 +3,7 @@ import { articleRepetitions, articleStatuses, articleTypes } from "./constants";
 
 const repetitionCondition = {
   repetition: Yup.string().oneOf(
-    articleRepetitions,
+    articleRepetitions.map((r) => r.value),
     "Please select one option"
   ),
 };
