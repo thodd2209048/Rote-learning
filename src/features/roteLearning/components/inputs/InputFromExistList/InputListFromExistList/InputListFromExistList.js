@@ -33,14 +33,14 @@ function InputListFromExistList({
   const [selected, setSelected] = useState([]);
 
   const handleSelect = (item) => {
-    const newSelected = [...selected, item.name];
+    const newSelected = [...selected, item];
     setSelected(newSelected);
     setSuggestions(data?.data.filter((t) => newSelected.includes(t.name)));
     setHint("");
   };
 
   const handleDeselect = (item) => {
-    const newSelected = selected.filter((i) => i !== item.name);
+    const newSelected = selected.filter((i) => i !== item);
     setSelected(newSelected);
     setSuggestions(data?.data.filter((t) => newSelected.includes(t.name)));
   };
@@ -57,7 +57,8 @@ function InputListFromExistList({
   }, [data, hint]);
 
   useEffect(() => {
-    form.setFieldValue(field.name, selected);
+    const selectedTagValues = selected.map((i) => i.name);
+    form.setFieldValue(field.name, selectedTagValues);
   }, [selected]);
 
   return (
@@ -71,7 +72,7 @@ function InputListFromExistList({
       )}
       <div className={clsx(styles.input, "col")}>
         <ShowSelected
-          selectedItems={field.value}
+          selectedItems={selected}
           handleDeselectItem={handleDeselect}
         />
         <Form.Control

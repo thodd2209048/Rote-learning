@@ -60,7 +60,7 @@ function InputOneFromExistList({
           <span>{capitalizeFirstLetter(label)}</span>
         </label>
       )}
-      <div className={clsx(styles.input, "col")}>
+      <div className={clsx(styles.input, "col-9  col-lg-10")}>
         <Form.Control
           className="w-100"
           placeholder="Enter to add"

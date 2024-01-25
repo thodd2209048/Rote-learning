@@ -31,7 +31,6 @@ function AddArticle(props) {
     },
   });
 
-  console.log("mutation", mutation);
   return (
     <div className={clsx(styles.wrapper, "container")}>
       <Row>
@@ -144,6 +143,8 @@ function AddArticle(props) {
                           label="Select a step"
                           leftLabel="Repetition"
                           options={articleRepetitions}
+                          fieldNameAsValue="value"
+                          fieldNameAsTitle="nextPeriod"
                           form={form}
                           field={field}
                           meta={meta}

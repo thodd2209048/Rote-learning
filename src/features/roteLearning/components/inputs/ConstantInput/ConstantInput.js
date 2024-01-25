@@ -29,18 +29,20 @@ function ConstantInput({
           {...props}
         >
           <option value={""}>{label}</option>
-          {options.map((option) => (
-            <option
-              key={
-                typeof option === "object" ? option[fieldNameAsValue] : option
-              }
-              value={
-                typeof option === "object" ? option[fieldNameAsValue] : option
-              }
-            >
-              {typeof option === "object" ? option[fieldNameAsTitle] : option}
-            </option>
-          ))}
+          {options.map((option) => {
+            return (
+              <option
+                key={
+                  typeof option === "object" ? option[fieldNameAsValue] : option
+                }
+                value={
+                  typeof option === "object" ? option[fieldNameAsValue] : option
+                }
+              >
+                {typeof option === "object" ? option[fieldNameAsTitle] : option}
+              </option>
+            );
+          })}
         </Form.Select>
         <ErrorMessage
           component={"div"}

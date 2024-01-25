@@ -20,7 +20,7 @@ function ShowSelected({ selectedItems, handleDeselectItem }) {
       >
         {selectedItems?.map((item) => (
           <li className={clsx(styles.tag)} key={item}>
-            <Tag tagName={item}>
+            <Tag tagName={item.name}>
               <CloseSvg
                 className={clsx(styles.closeIcon)}
                 onClick={() => handleDeselectItem(item)}
