@@ -1,20 +1,18 @@
 import { Field, Form, Formik } from "formik";
 import { memo } from "react";
 import { useMutation, useQueryClient } from "react-query";
-
 import clsx from "clsx";
-import { updateLastTimeReadOfArticle } from "~/features/roteLearning/api/api";
-import { articleRepetitions } from "~/features/roteLearning/config/constants";
-import { schemas } from "~/features/roteLearning/config/schemas";
-import styles from "./RepetitionArticle.module.scss";
-
 import { faHourglass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Button from "~/components/Button/Button";
-import Tag from "~/components/TagComponents/Tag/Tag";
+
+import styles from "./RepetitionArticle.module.scss";
+import { updateLastTimeReadOfArticle } from "~/features/roteLearning/api/api";
+import { schemas } from "~/features/roteLearning/config/schemas";
+import { articleRepetitions } from "~/features/roteLearning/config/constants";
 import RadioOption from "~/features/roteLearning/components/inputs/RadioInput/RadioOption/RadioOption";
+import Tag from "~/components/TagComponents/Tag/Tag";
 
 RepetitionArticle.propTypes = {};
 

@@ -3,21 +3,24 @@ import clsx from "clsx";
 import { Field, Form, Formik } from "formik";
 import { Button, Col, Row } from "react-bootstrap";
 import { useMutation, useQueryClient } from "react-query";
-
-import GeneralInput from "~/components/GeneralInput/GeneralInput";
-import InputListFromExistList from "~/features/roteLearning/components/inputs/InputFromExistList/InputListFromExistList/InputListFromExistList";
-import InputOneFromExistList from "../../components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList";
+import {
+  createArticle,
+  listSeries,
+  listSubject,
+  listTag,
+} from "~/features/roteLearning/api/api";
 
 import styles from "./AddArticle.module.scss";
-
-import { createArticle, listSeries, listSubject, listTag } from "../../api/api";
-import ConstantInput from "../../components/inputs/ConstantInput/ConstantInput";
+import { schemas } from "~/features/roteLearning/config/schemas";
+import GeneralInput from "~/components/GeneralInput/GeneralInput";
+import InputOneFromExistList from "~/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList";
+import InputListFromExistList from "~/features/roteLearning/components/inputs/InputFromExistList/InputListFromExistList/InputListFromExistList";
+import ConstantInput from "~/features/roteLearning/components/inputs/ConstantInput/ConstantInput";
 import {
   articleRepetitions,
   articleStatuses,
   articleTypes,
-} from "../../config/constants";
-import { schemas } from "../../config/schemas";
+} from "~/features/roteLearning/config/constants";
 import NotificationApi from "~/components/ui/NotificationApi/NotificationApi";
 
 AddArticle.propTypes = {};
@@ -58,7 +61,6 @@ function AddArticle(props) {
             }}
           >
             {({ resetForm, values }) => {
-              console.log("values", values);
               return (
                 <Form className="row">
                   <div className="col">

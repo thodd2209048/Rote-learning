@@ -1,8 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import RepetitionPage from "~/features/roteLearning/features/articles/pages/RepetitionPage/RepetitionPage";
 import RandomQuote from "~/features/roteLearning/features/quotes/components/RandomQuote/RandomQuote";
-import RepetitionArticle from "~/features/roteLearning/pages/RepetitionPage/RepetitionArticle/RepetitionArticle";
-import RepetitionPage from "~/features/roteLearning/pages/RepetitionPage/RepetitionPage";
 
 HomePage.propTypes = {};
 

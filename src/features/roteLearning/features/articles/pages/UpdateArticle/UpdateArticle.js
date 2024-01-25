@@ -13,19 +13,18 @@ import {
   listSubject,
   listTag,
   updateArticle,
-} from "../../api/api";
-import { schemas } from "../../config/schemas";
-
+} from "~/features/roteLearning/api/api";
 import PageLayout from "~/layouts/PageLayout/PageLayout";
+import { schemas } from "~/features/roteLearning/config/schemas";
 import GeneralInput from "~/components/GeneralInput/GeneralInput";
-import InputOneFromExistList from "../../components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList";
-import InputListFromExistList from "../../components/inputs/InputFromExistList/InputListFromExistList/InputListFromExistList";
-import ConstantInput from "../../components/inputs/ConstantInput/ConstantInput";
+import InputOneFromExistList from "~/features/roteLearning/components/inputs/InputFromExistList/InputOneFromExistList/InputOneFromExistList";
+import InputListFromExistList from "~/features/roteLearning/components/inputs/InputFromExistList/InputListFromExistList/InputListFromExistList";
+import ConstantInput from "~/features/roteLearning/components/inputs/ConstantInput/ConstantInput";
 import {
   articleRepetitions,
   articleStatuses,
   articleTypes,
-} from "../../config/constants";
+} from "~/features/roteLearning/config/constants";
 import NotificationApi from "~/components/ui/NotificationApi/NotificationApi";
 import Tag from "~/components/TagComponents/Tag/Tag";
 

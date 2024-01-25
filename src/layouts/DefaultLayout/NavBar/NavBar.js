@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Button from "~/components/Button/Button";
 import { Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { paths } from "~/routes/paths";
 
 NavBar.propTypes = {
   className: PropTypes.string,
@@ -31,17 +32,25 @@ function NavBar({ className }) {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <NavDropdown title="Article" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/repetition">
+                  <NavDropdown.Item
+                    as={Link}
+                    to={paths.articlePaths.repetition}
+                  >
                     Repetition
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/addArticle">
+                  <NavDropdown.Item
+                    as={Link}
+                    to={paths.articlePaths.addArticle}
+                  >
                     Add article
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/articles">
+                  <NavDropdown.Item as={Link} to={paths.articlePaths.articles}>
                     List articles
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="/admin">Admin</Nav.Link>
+                <Nav.Link as={Link} to={paths.adminPaths.admin}>
+                  Admin
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
