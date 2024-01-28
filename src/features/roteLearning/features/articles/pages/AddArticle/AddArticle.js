@@ -57,10 +57,12 @@ function AddArticle(props) {
             }}
             validationSchema={schemas.addArticle}
             onSubmit={(values) => {
-              mutation.mutate({ ...values });
+              console.log(values);
+              const tags = values.tags.map((i) => i.name);
+              mutation.mutate({ ...values, tags });
             }}
           >
-            {({ resetForm, values }) => {
+            {({ resetForm, values, submitForm }) => {
               return (
                 <Form className="row">
                   <div className="col">
@@ -175,8 +177,9 @@ function AddArticle(props) {
                     <div className="col">
                       <button
                         className="btn btn-primary me-3"
-                        type="submit"
+                        type="button"
                         disabled={mutation.isPending}
+                        onClick={submitForm}
                       >
                         Submit
                       </button>

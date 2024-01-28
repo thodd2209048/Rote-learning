@@ -29,27 +29,26 @@ function InputOneFromExistList({
   });
 
   const [suggestions, setSuggestions] = useState([]);
-  const [selected, setSelected] = useState("");
 
   const handleSelect = (item) => {
-    setSelected(item.name);
+    form.setFieldValue(field.name, item.name);
     setSuggestions((prev) => prev.filter((t) => t !== item));
   };
 
   const enterToAddItem = (e) => {
     if (e.key === "Enter") {
-      setSelected(e.target.value);
+      form.setFieldValue(field.name, e.target.value);
     }
   };
 
   useEffect(() => {
-    setSuggestions(data?.data.filter((tag) => tag.name.includes(selected)));
-  }, [data, selected]);
+    setSuggestions(data?.data.filter((tag) => tag.name.includes(field.value)));
+  }, [data, field.value]);
 
   useEffect(() => {
-    const passValue = selected === "" ? null : selected;
+    const passValue = field.value === "" ? null : field.value;
     form.setFieldValue(field.name, passValue);
-  }, [selected]);
+  }, [field.value]);
 
   return (
     <div
@@ -64,11 +63,13 @@ function InputOneFromExistList({
         <Form.Control
           className="w-100"
           placeholder="Enter to add"
-          value={selected}
+          value={field.value || ""}
           onKeyDown={enterToAddItem}
-          onChange={(e) => setSelected(e.target.value.toLowerCase())}
+          onChange={(e) =>
+            form.setFieldValue(field.name, e.target.value.toLowerCase())
+          }
         />
-        {!!selected && (
+        {!!field.name && (
           <HintListDisplay
             className={clsx(styles.dropdown)}
             hintList={suggestions}

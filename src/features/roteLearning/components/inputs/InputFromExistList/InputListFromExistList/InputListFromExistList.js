@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useQuery } from "react-query";
 import clsx from "clsx";
@@ -22,6 +22,7 @@ function InputListFromExistList({
   queryFn,
   staleTime = 1000 * 60 * 2,
 }) {
+  const inputRef = useRef();
   const { data, isSuccess } = useQuery({
     queryKey: [field.name],
     queryFn: () => queryFn(),
@@ -30,36 +31,39 @@ function InputListFromExistList({
 
   const [hint, setHint] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [selected, setSelected] = useState([]);
 
   const handleSelect = (item) => {
-    const newSelected = [...selected, item];
-    setSelected(newSelected);
+    if (field.value.includes(item)) return;
+    const newSelected = [...field.value, item];
+    console.log("newSelected", newSelected);
+    form.setFieldValue(field.name, newSelected);
     setSuggestions(data?.data.filter((t) => newSelected.includes(t.name)));
     setHint("");
+    inputRef.current.focus();
   };
 
   const handleDeselect = (item) => {
-    const newSelected = selected.filter((i) => i !== item);
-    setSelected(newSelected);
+    const newSelected = field.value.filter((i) => i !== item);
+    form.setFieldValue(field.name, newSelected);
     setSuggestions(data?.data.filter((t) => newSelected.includes(t.name)));
   };
 
   const enterToAddItem = (e) => {
-    if (e.key === "Enter") {
-      setSelected((prev) => [...prev, e.target.value]);
-      setHint("");
+    if (e.key !== "Enter") return;
+
+    const itemValue = e.target.value;
+    let item = data?.data.find((item) => item.value === itemValue);
+    if (!item) {
+      item = { name: itemValue, count: 1 };
+      handleSelect(item);
     }
+
+    setHint("");
   };
 
   useEffect(() => {
     setSuggestions(data?.data.filter((tag) => tag.name.includes(hint)));
   }, [data, hint]);
-
-  useEffect(() => {
-    const selectedTagValues = selected.map((i) => i.name);
-    form.setFieldValue(field.name, selectedTagValues);
-  }, [selected]);
 
   return (
     <div
@@ -72,15 +76,16 @@ function InputListFromExistList({
       )}
       <div className={clsx(styles.input, "col")}>
         <ShowSelected
-          selectedItems={selected}
+          selectedItems={field.value}
           handleDeselectItem={handleDeselect}
         />
         <Form.Control
           className="w-100"
           placeholder="Enter to add"
-          value={hint}
+          value={hint || ""}
           onKeyDown={enterToAddItem}
           onChange={(e) => setHint(e.target.value.toLowerCase())}
+          ref={inputRef}
         />
         {!!hint && (
           <HintListDisplay
