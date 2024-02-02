@@ -35,7 +35,6 @@ function InputListFromExistList({
   const handleSelect = (item) => {
     if (field.value.includes(item)) return;
     const newSelected = [...field.value, item];
-    console.log("newSelected", newSelected);
     form.setFieldValue(field.name, newSelected);
     setSuggestions(data?.data.filter((t) => newSelected.includes(t.name)));
     setHint("");
